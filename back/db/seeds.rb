@@ -14,22 +14,22 @@ un_arr = [
   {
     id: 1,
     name: "UNIP",
-    logo: "https://s3.amazonaws.com/querobolsatemp-dev/logos/colorido/medium/25/logo_1489432787.png",
+    logo: "https://d2my3dgdogz33p.cloudfront.net/logos/colorido/medium/25/logo_1489432787.png",
   },
   {
     id: 2,
     name: "ESTACIO",
-    logo: "https://s3.amazonaws.com/querobolsatemp-dev/logos/colorido/medium/25/logo_1489432787.png",
+    logo: "https://d2my3dgdogz33p.cloudfront.net/logos/colorido/medium/19/logo_1504890816.png",
   },
   {
     id: 3,
-    name: "UNINOVE",
-    logo: "https://s3.amazonaws.com/querobolsatemp-dev/logos/colorido/medium/25/logo_1489432787.png",
+    name: "BILAC",
+    logo: "https://d2my3dgdogz33p.cloudfront.net/logos/colorido/medium/292/logo_1489434305.png",
   },
   {
     id: 4,
-    name: "UNISANTANA",
-    logo: "https://s3.amazonaws.com/querobolsatemp-dev/logos/colorido/medium/25/logo_1489432787.png",
+    name: "UNICID",
+    logo: "https://d2my3dgdogz33p.cloudfront.net/logos/colorido/medium/30/logo_1489432835.png",
   },
 ]
 
