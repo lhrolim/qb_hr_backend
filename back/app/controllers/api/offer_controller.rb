@@ -6,6 +6,8 @@ class Api::OfferController < ActionController::Base
   PAGE_SIZE = 10
 
   def index
+    byebug
+
     offers = build_search_criteria(params).limit(PAGE_SIZE)
 
     respond_to do |format|

@@ -112,7 +112,7 @@ course_arr = [
   {
     id: 7,
     name: "Engenharia de Computação",
-    kind: "Graduação",
+    kind: "Presencial",
     shift: "Manhã",
     level: "Graduação",
     max_periods: "10",
@@ -123,7 +123,7 @@ course_arr = [
   {
     id: 8,
     name: "Engenharia de Computação",
-    kind: "Graduação",
+    kind: "Presencial",
     shift: "Noite",
     level: "Graduação",
     max_periods: "10",
@@ -134,7 +134,7 @@ course_arr = [
   {
     id: 9,
     name: "Engenharia de Computação",
-    kind: "Graduação",
+    kind: "Presencial",
     shift: "Noite",
     level: "Graduação",
     max_periods: "10",

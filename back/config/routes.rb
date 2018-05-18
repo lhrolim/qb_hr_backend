@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :offer, :course
 
     resources :university do
-      resources :university_offer, path: "offer"
+      resources :offer, path: "offer"
       resources :university_course, path: "course"
     end
   end
