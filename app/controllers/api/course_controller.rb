@@ -5,7 +5,10 @@ class Api::CourseController < ActionController::Base
   PAGE_SIZE = 10
 
   def index
-    courses = Course.take(PAGE_SIZE)
+    course = Course.unscoped
+    course = course.where("name like ?", "%#{params["name"]}%") unless params["name"] == nil?
+
+    courses = course.take(PAGE_SIZE)
 
     respond_to do |format|
       format.json do

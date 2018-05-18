@@ -5,11 +5,13 @@ class Api::UniversityController < ActionController::Base
   PAGE_SIZE = 10
 
   def index
-    offers = University.take(PAGE_SIZE)
+    un = University.unscoped
+    un = un.where("name like ?", "%#{params["name"]}%") unless params["name"] == nil
+    universities = un.take(PAGE_SIZE)
 
     respond_to do |format|
       format.json do
-        json_response(offers)
+        json_response(universities)
       end
     end
   end
