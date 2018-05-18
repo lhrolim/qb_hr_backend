@@ -5,7 +5,8 @@ class Api::UniversityCourseController < ActionController::Base
   PAGE_SIZE = 10
 
   def index
-    offers = Course.where(university_id: params["university_id"]).take(PAGE_SIZE)
+    un_id = params["university_id"]
+    offers = Course.joins(:university).where(:universities => {"id": un_id}).take(PAGE_SIZE)
     json_response(offers)
   end
 end
