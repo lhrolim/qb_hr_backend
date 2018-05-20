@@ -1,5 +1,8 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 8081,
+  "packagerPid": null,
+  "expoServerNgrokUrl": "https://ye-uj7.lhrolim.front.exp.direct",
+  "packagerNgrokUrl": "https://packager.ye-uj7.lhrolim.front.exp.direct",
+  "ngrokPid": 23988
 }
