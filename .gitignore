@@ -107,8 +107,6 @@ zeus.json
 
 node_modules
 
-# Linux core dump
-core
 
 # Visual Studio Code
 /.project
