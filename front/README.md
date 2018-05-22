@@ -11,6 +11,7 @@ Besides the the [requirements](./Requirements.md) a few things will be evaluated
 * General Es6/React good practices
 * Visual styling in general
 * Presence of unit tests (Plus!)
+* Documentation
 
 
 
