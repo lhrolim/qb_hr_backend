@@ -1,6 +1,21 @@
 This is the mobile portion of the application.
 
-It was built on top of create-react-native-app which integrates [expo](https://expo.io/) as a toolkit.
+The majority of the [requirements](../Requirements.md) will be implemented here as the back-end api is 'nearly done'.
+
+Besides the the [requirements](../Requirements.md) a few things will be evaluated:
+
+* Proper usage of redux
+* Proper organization of the code into container/components
+* Proper error handling
+* Proper setup of styles for the created container/components
+* General Es6/React good practices
+* Presence of unit tests (Plus!)
+
+
+## Setup
+
+For the sake of simplicity, we're providing a bolierplate of a react-native project, which was built on top of `create-react-native-app` global module,
+which integrates [expo](https://expo.io/) as a toolkit.
 
 The project is also optionized towards a few frameworks
 
@@ -8,9 +23,6 @@ The project is also optionized towards a few frameworks
 * react-navigation
 * superagent (for http requests)
 
-## Setup
-
-For the sake of simplicity, we're providing a bolierplate of a react-native project, which was built on top of `create-react-native-app` global module.
 
 **Modify your /infra/server/server.json to point to your ip**
 
