@@ -1,15 +1,17 @@
 This is the mobile portion of the application.
 
-The majority of the [requirements](../Requirements.md) will be implemented here as the back-end api is 'nearly done'.
+The majority of the [requirements](./Requirements.md) will be implemented here as the back-end api is 'nearly done'.
 
-Besides the the [requirements](../Requirements.md) a few things will be evaluated:
+Besides the the [requirements](./Requirements.md) a few things will be evaluated:
 
 * Proper usage of redux
 * Proper organization of the code into container/components
 * Proper error handling
 * Proper setup of styles for the created container/components
 * General Es6/React good practices
+* Visual styling in general
 * Presence of unit tests (Plus!)
+
 
 
 ## Setup
