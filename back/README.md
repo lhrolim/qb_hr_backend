@@ -1,6 +1,6 @@
 # README
 
-This is the api of the appplication.
+This is the api of the application.
 
 For the sake fo simplicity it relies on an in-memory sqllite database.
 
@@ -12,7 +12,7 @@ It might be needed, however, to fix eventual bugs on the api in order to meet th
 Refer to [Requirements](../../Requirements.md)
 
 
-Note that we might also consider, additionally, any eventual api improvments in the following areas:
+Note that we might also consider, additionally, any eventual api improvements in the following areas:
 
 * Documentation
 * Performance (eg: payload reduction)

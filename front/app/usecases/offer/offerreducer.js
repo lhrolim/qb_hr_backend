@@ -1,9 +1,4 @@
 const InitialState = {
-  offers: [],
-  detailoffer: null,
-  loading: false,
-  searching: false,
-  searchingState : {},
 };
 
 export default offerState = (state = InitialState, action) => {

@@ -17,10 +17,10 @@ Besides the the [requirements](./Requirements.md) a few things will be evaluated
 
 ## Setup
 
-For the sake of simplicity, we're providing a bolierplate of a react-native project, which was built on top of `create-react-native-app` global module,
+For the sake of simplicity, we're providing a boilerplate of a react-native project, which was built on top of `create-react-native-app` global module,
 which integrates [expo](https://expo.io/) as a toolkit.
 
-The project is also optionized towards a few frameworks
+The project is also optioned towards a few frameworks
 
 * redux
 * react-navigation
