@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity,Button } from 'react-native';
+import { NavigationActions } from "react-navigation";
 import { connnect } from 'react-redux'
 
 import  agent from 'infra/server/superagent'
@@ -9,7 +10,7 @@ class OfferList extends Component {
 
 
   static navigationOptions = {
-    title: 'Home',
+    title: 'List',
     headerStyle: {
       backgroundColor: '#f4511e',
     },
@@ -17,6 +18,15 @@ class OfferList extends Component {
     headerTitleStyle: {
       fontWeight: 'bold',
     },
+  };
+
+
+  navigate = () => {
+    const detailNav = NavigationActions.navigate({
+      routeName: "offerdetail",
+      params: { name: "My Detail..." }
+    });
+    this.props.navigation.dispatch(detailNav);
   };
 
   async componentWillMount() {
@@ -39,7 +49,16 @@ class OfferList extends Component {
           alignItems: "center"
         }}
       >
-        <Text>1</Text>
+        <Text>List</Text>
+        <TouchableOpacity
+          style={{
+            paddingVertical: 15,
+            paddingHorizontal: 40,
+          }}
+          onPress={this.navigate}
+        >
+        <Button title="Load Detail" onPress={this.navigate}>Load Detail</Button>
+        </TouchableOpacity>
       </View>
     );
   }
