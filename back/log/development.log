@@ -5563,3 +5563,88 @@ Unpermitted parameter: :format
 Completed 200 OK in 29ms (Views: 23.7ms | ActiveRecord: 1.6ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-05-22 10:03:20 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/luiz/.rvm/gems/ruby-2.3.5/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/luiz/.rvm/gems/ruby-2.3.5/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (2.3ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/offer" for 127.0.0.1 at 2018-05-22 10:03:21 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 69ms (Views: 56.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/offer" for 192.168.21.198 at 2018-05-22 10:10:51 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 15ms (Views: 13.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/offer" for 192.168.21.198 at 2018-05-22 10:11:03 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (0.7ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/offer" for 192.168.21.198 at 2018-05-22 10:11:33 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/offer" for 192.168.21.198 at 2018-05-22 10:11:53 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (1.8ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 15ms (Views: 12.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/offer" for 192.168.21.198 at 2018-05-22 10:12:23 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/offer" for 192.168.21.198 at 2018-05-22 10:16:38 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (1.0ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 24ms (Views: 21.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/offer" for 192.168.21.198 at 2018-05-22 10:17:56 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/offer" for 192.168.21.198 at 2018-05-22 10:18:24 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (1.2ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 35ms (Views: 31.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/offer" for 192.168.21.198 at 2018-05-22 10:19:36 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (1.4ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 31ms (Views: 27.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/offer" for 192.168.21.198 at 2018-05-22 10:20:51 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (0.9ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 24ms (Views: 21.4ms | ActiveRecord: 0.9ms)
+
+

@@ -21,8 +21,12 @@ class OfferList extends Component {
 
   async componentWillMount() {
     //TODO: bring initial list
-    const list = await agent.Offer.list();
-    // this.props.dispatch({type:"xxx"})
+    try {
+      const list = await agent.Offer.list();
+      console.log(list);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {

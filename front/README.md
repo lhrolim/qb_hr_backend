@@ -12,6 +12,8 @@ The project is also optionized towards a few frameworks
 
 For the sake of simplicity, we're providing a bolierplate of a react-native project, which was built on top of `create-react-native-app` global module.
 
+**Modify your /infra/server/server.json to point to your ip**
+
 
 The project was tested using the following:
 

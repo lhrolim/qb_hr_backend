@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
+  "expoServerPort": 19001,
   "packagerPort": 8081,
   "packagerPid": null,
-  "expoServerNgrokUrl": "https://ag-itu.lhrolim.front.exp.direct",
-  "packagerNgrokUrl": "https://packager.ag-itu.lhrolim.front.exp.direct",
-  "ngrokPid": 13736
+  "expoServerNgrokUrl": "https://5u-wrv.lhrolim.front.exp.direct",
+  "packagerNgrokUrl": "https://packager.5u-wrv.lhrolim.front.exp.direct",
+  "ngrokPid": 18470
 }
