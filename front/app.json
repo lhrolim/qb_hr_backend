@@ -2,6 +2,9 @@
   "expo": {
     "sdkVersion": "27.0.0",
     "slug": "qb_mobile_hr",
-    "name": "qb_mobile_hr"
+    "name": "qb_mobile_hr",
+    "android": {
+      "package": "br.com.queroeducacao.querobolsa"
+    }
   }
 }
