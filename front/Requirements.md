@@ -21,11 +21,11 @@
 
 ## Examples
 
-Follows some example screenshots from our current application (querbolsa @ google play) to serve as a guide.
+Follows some example screenshots from our current application (querobolsa @ google play) to serve as a guide.
 
 The final layout, by no means, must follow strictly the screenshots, although it's also acceptable to do it as such.
 
-Please, feel free to disregard any extra funcionalities which are not stated as required (such as geolocation search, number of results, bottom menu, etc )
+Please, feel free to disregard any extra functionalities which are not stated as required (such as geolocation search, number of results, bottom menu, etc )
 
 
 ### List Example
