@@ -15,6 +15,7 @@ const responseBody = res => {
 const failure = error => {
   //TODO: mark ajax end
   //TODO: handle notification error
+  console.error(error);
   return error;
 };
 
@@ -30,24 +31,24 @@ const Api = () => {
 };
 
 const requests = {
-  del: url =>
+  del:async url =>
     await superagent.del(`${Api()}${url}`)
       .use(tokenPlugin)
       .then(responseBody)
       .catch(failure),
-  get: url =>
-    superagent
+  get: async url =>
+    await superagent
       .get(`${Api()}${url}`)
       .use(tokenPlugin)
       .then(responseBody)
       .catch(failure),
-  put: (url, body) =>
+  put: async (url, body) =>
     await superagent
       .put(`${Api()}${url}`, body)
       .use(tokenPlugin)
       .then(responseBody)
       .catch(failure),
-  post: (url, body) =>
+  post: async (url, body) =>
   await superagent
       .post(`${Api()}${url}`, body)
       .use(tokenPlugin)

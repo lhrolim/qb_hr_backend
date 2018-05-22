@@ -5441,3 +5441,125 @@ Unpermitted parameter: :format
 Completed 200 OK in 58853ms (Views: 59.1ms | ActiveRecord: 1.6ms)
 
 
+Started GET "/api/offer" for 127.0.0.1 at 2018-05-22 09:20:29 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 49ms (Views: 43.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2018-05-22 09:20:29 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/offer" for 192.168.21.149 at 2018-05-22 09:22:10 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (0.7ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/favicon.ico" for 192.168.21.149 at 2018-05-22 09:22:10 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api" for 192.168.21.198 at 2018-05-22 09:22:31 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/api"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/favicon.ico" for 192.168.21.198 at 2018-05-22 09:22:31 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/offer" for 192.168.21.198 at 2018-05-22 09:22:40 -0300
+Processing by Api::OfferController#index as JSON
+Unpermitted parameter: :format
+  [1m[35mSQL (1.6ms)[0m  [1m[34mSELECT  "offers"."id" AS t0_r0, "offers"."uuid" AS t0_r1, "offers"."description" AS t0_r2, "offers"."discount_percentage" AS t0_r3, "offers"."offered_price" AS t0_r4, "offers"."full_price" AS t0_r5, "offers"."university_id" AS t0_r6, "offers"."course_id" AS t0_r7, "offers"."created_at" AS t0_r8, "offers"."updated_at" AS t0_r9, "universities"."id" AS t1_r0, "universities"."name" AS t1_r1, "universities"."logo" AS t1_r2, "universities"."description" AS t1_r3, "universities"."created_at" AS t1_r4, "universities"."updated_at" AS t1_r5, "courses"."id" AS t2_r0, "courses"."name" AS t2_r1, "courses"."kind" AS t2_r2, "courses"."shift" AS t2_r3, "courses"."level" AS t2_r4, "courses"."description" AS t2_r5, "courses"."max_periods" AS t2_r6, "courses"."created_at" AS t2_r7, "courses"."updated_at" AS t2_r8 FROM "offers" INNER JOIN "universities" ON "universities"."id" = "offers"."university_id" INNER JOIN "courses" ON "courses"."id" = "offers"."course_id" WHERE (offered_price <= 1000) LIMIT ?[0m  [["LIMIT", 10]]
+Completed 200 OK in 29ms (Views: 23.7ms | ActiveRecord: 1.6ms)
+
+
