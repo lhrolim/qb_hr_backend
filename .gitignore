@@ -107,6 +107,8 @@ zeus.json
 
 node_modules
 
+back/log
+
 
 # Visual Studio Code
 /.project
