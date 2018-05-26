@@ -23,6 +23,7 @@
 
 
 **Bear in mind that some of these requirements might require little backend adjustments**
+**Despite of this guideline being written in english, all the labels of the application should be written in portuguease**
 
 ## Examples
 
