@@ -80,4 +80,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  if Dir.exist? "/var/log/app_engine/custom_logs"
+    config.logger = ActiveSupport::TaggedLogging.new Logger.new("/var/log/app_engine/custom_logs/application.log")
+  end
 end
