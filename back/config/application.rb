@@ -29,7 +29,17 @@ module QbMobileHr
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    
+    config.i18n.default_locale = 'pt-BR'
 
+    config.middleware.use Rack::Deflater
+    
+    config.middleware.use Rack::Attack
+
+    config.action_controller.perform_caching = true
+
+    config.cache_store = :memory_store
+   
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins "*"

@@ -1,0 +1,24 @@
+dependencies: \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/Text/RCTTextView.m \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/Text/RCTTextView.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/Text/RCTTextShadowView.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTShadowView.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLayout.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/BaseText/RCTBaseTextShadowView.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/RCTTextAttributes.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h

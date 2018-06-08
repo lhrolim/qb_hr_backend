@@ -1,0 +1,32 @@
+dependencies: \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/TextInput/Multiline/RCTMultilineTextInputViewManager.m \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/TextInput/Multiline/RCTMultilineTextInputViewManager.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/TextInput/RCTBaseTextInputViewManager.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/BaseText/RCTBaseTextViewManager.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTViewManager.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/TextInput/Multiline/RCTMultilineTextInputView.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/TextInput/RCTBaseTextInputView.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTView.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/TextInput/RCTBackedTextInputDelegate.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/node_modules/react-native/Libraries/Text/TextInput/RCTBackedTextInputViewProtocol.h

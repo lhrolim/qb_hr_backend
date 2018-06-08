@@ -1,0 +1,23 @@
+dependencies: \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/QueroEducacao/AppDelegate.m \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/QueroEducacao/AppDelegate.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBundleURLProvider.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/Pods/Fabric/iOS/Fabric.framework/Modules/module.modulemap \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/Pods/Fabric/iOS/Fabric.framework/Headers/FABAttributes.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/Pods/Fabric/iOS/Fabric.framework/Headers/Fabric.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/Pods/Crashlytics/iOS/Crashlytics.framework/Modules/module.modulemap \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/ANSCompatibility.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/Answers.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSStackFrame.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSReport.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSLogging.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSAttributes.h \
+  /Users/elourenco/Workspace/Redealumni/QueroEducacao/ios/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/Crashlytics.h
