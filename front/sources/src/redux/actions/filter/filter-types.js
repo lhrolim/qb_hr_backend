@@ -1,0 +1,4 @@
+export default {
+  FILTER_ACTIVED: 'FILTER_ACTIVED',
+  FILTER_RESET: 'FILTER_RESET',
+};
