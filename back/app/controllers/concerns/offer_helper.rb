@@ -1,18 +1,31 @@
 module OfferHelper
   def build_search_criteria(params)
-    unscoped = Offer.unscoped.includes(:university, :course).joins(:university, :course)
+    unscoped = Offer.unscoped
+      .includes(:course, :university)
+      .joins(:course, :university)
 
-    api_hash = params.permit("university_id", "course_id", "kind", "level", "shift", "discount_percentage_min", "offered_price_max").to_h
+    permitted = params
+      .permit([:format, :university, :course, :kind, :level, :shift, :discount_percentage_min, :offered_price_max])
+    
+    api_hash = permitted.to_h || {}
+    api_hash.delete(:format)
 
-    courses_hash = {}
-
+    courses_hash = Hash.new
+    courses_hash.store("name", api_hash.delete("course")) unless !api_hash.has_key? ("course")
     courses_hash.store("kind", api_hash.delete("kind")) unless !api_hash.has_key? ("kind")
     courses_hash.store("level", api_hash.delete("level")) unless !api_hash.has_key? ("level")
     courses_hash.store("shift", api_hash.delete("shift")) unless !api_hash.has_key? ("shift")
 
+    university_hash = Hash.new
+    university_hash.store("name", api_hash.delete("university")) unless !api_hash.has_key? ("university")
+
+
     unless courses_hash.empty?
       api_hash["courses"] = courses_hash
-      # unscoped = unscoped.joins(:course)
+    end
+
+    unless university_hash.empty?
+      api_hash["universities"] = university_hash
     end
 
     discount_min = api_hash.delete "discount_percentage_min"
