@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity,Button } from 'react-native';
+import { View, Text, TouchableOpacity, Button } from 'react-native';
 import { NavigationActions } from "react-navigation";
-import { connnect } from 'react-redux'
 
-import  agent from 'infra/server/superagent'
+import { OfferListView } from '../components/offerListView';
+
+import agent from 'infra/server/superagent'
 
 class OfferList extends Component {
 
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      offers: []
+    };
+  }
 
   static navigationOptions = {
     title: 'List',
     headerStyle: {
-      backgroundColor: '#f4511e',
+      backgroundColor: '#0F9BB1',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -20,45 +26,33 @@ class OfferList extends Component {
     },
   };
 
-
-  navigate = () => {
-    const detailNav = NavigationActions.navigate({
-      routeName: "offerdetail",
-      params: { name: "My Detail..." }
-    });
-    this.props.navigation.dispatch(detailNav);
-  };
-
-  async componentWillMount() {
-    //TODO: bring initial list
+  async componentDidMount() {
     try {
       const list = await agent.Offer.list();
+      this.setState({
+        offers: list
+      });
       console.log(list);
     } catch (err) {
       console.log(err);
     }
   }
 
+  navigate = (offer) => {
+      const detailNav = NavigationActions.navigate({
+        routeName: "offerdetail",
+        params: { name: offer.uuid }
+      });
+      this.props.navigation.dispatch(detailNav);
+    };
+
   render() {
+
+    // TODO: Show message if no offers found
+
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "yellowgreen",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <Text>List</Text>
-        <TouchableOpacity
-          style={{
-            paddingVertical: 15,
-            paddingHorizontal: 40,
-          }}
-          onPress={this.navigate}
-        >
-        <Button title="Load Detail" onPress={this.navigate}>Load Detail</Button>
-        </TouchableOpacity>
+      <View style={{flex: 1}}>
+        <OfferListView data={this.state.offers} onItemPress={this.navigate} />
       </View>
     );
   }
