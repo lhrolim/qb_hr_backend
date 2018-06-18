@@ -1,38 +1,46 @@
 import { StyleSheet } from 'react-native';
 
+const smallMargin = 5;
+const normalMargin = 10;
+const backgroundColor = '#E5E0DD';
+const foregroundColor = '#FFFFFF';
+const detailColor = '#8AB0D0';
+const universityLogo = { width: 150, height: 50 };
+const normalFont = 12;
+const largeFont = 15;
+
 export const styles = StyleSheet.create({
-  container: {
-    borderRadius: 4,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-  },
-  title: {
-    fontSize: 19,
-    fontWeight: 'bold',
-  },
-  activeTitle: {
-    color: 'red',
-  },
   offerList: {
-    backgroundColor: '#E5E0DD',
-    paddingTop: 5,
-    paddingBottom: 5
+    backgroundColor: backgroundColor,
+    paddingTop: smallMargin,
+    paddingBottom: smallMargin
+  },
+  offerListHeader: {
+    backgroundColor: foregroundColor,
+    paddingLeft: 15 + normalMargin,
+    paddingRight: 15 + normalMargin,
+    paddingTop: smallMargin,
+    paddingBottom: smallMargin,
+    alignItems: 'flex-end'
+  },
+  offerListHeaderText: {
+    fontSize: largeFont
   },
   offerCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: foregroundColor,
     borderRadius: 15,
-    borderColor: '#8AB0D0',
+    borderColor: detailColor,
     borderWidth: StyleSheet.hairlineWidth,
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 5,
-    marginBottom: 5,
+    marginLeft: normalMargin,
+    marginRight: normalMargin,
+    marginTop: smallMargin,
+    marginBottom: smallMargin,
     padding: 15
   },
   universityLogo: {
     flex: 1,
-    width: 150,
-    height: 50
+    width: universityLogo.width,
+    height: universityLogo.height
   },
   strikeThrough: {
     textDecorationLine: 'line-through',

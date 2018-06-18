@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
-import { FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
+
 import { OfferListItem } from '../components/offer';
+import { OfferListHeaderView } from '../components/offerListViewHeader';
 import { styles } from '../styles/default';
-import { NavigationActions } from "react-navigation";
 
 export class OfferListView extends PureComponent {
     state = { selected: (new Map(): Map<string, boolean>) };
@@ -34,13 +35,16 @@ export class OfferListView extends PureComponent {
 
     render() {
         return (
-            <FlatList
-                style={styles.offerList}
-                data={this.props.data}
-                extraData={this.state}
-                keyExtractor={this._keyExtractor}
-                renderItem={this._renderItem}
-            />
+            <View>
+                <OfferListHeaderView filteredTotal={this.props.data.length - 1} total={this.props.data.length} />
+                <FlatList
+                    style={styles.offerList}
+                    data={this.props.data}
+                    extraData={this.state}
+                    keyExtractor={this._keyExtractor}
+                    renderItem={this._renderItem}
+                />
+            </View>
         );
     }
 }
