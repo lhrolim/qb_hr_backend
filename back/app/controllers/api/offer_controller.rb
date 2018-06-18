@@ -7,7 +7,14 @@ class Api::OfferController < ActionController::Base
 
   def index
 
-    offers = build_search_criteria(params).limit(PAGE_SIZE)
+    params.permit("page")
+    page = params[:page].to_i
+
+    if page < 1
+        page = 1
+    end
+
+    offers = build_search_criteria(params).offset(PAGE_SIZE*(page - 1)).limit(PAGE_SIZE)
 
     respond_to do |format|
       format.json do
