@@ -60,6 +60,7 @@ The following endpoints are available:
   * shift either `Manha`, `Tarde`, `Noite`
   * discount_percentage_min the min discount the user is seeking
   * offered_price_max the max price the user is seeking
+  * page the page number you want to get
 * `/api/offer/{offer_id}` --> loads a specific offer for details
 * `/api/course/`--> list of all available courses. Accepts name as a query parameter
 * `/api/university/`--> list of all available universities. Accepts name as a query parameter
