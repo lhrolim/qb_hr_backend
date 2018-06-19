@@ -2,7 +2,7 @@ import { createStore,combineReducers,applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
 /** Authentication module */
-import offerReducer from '../../app/usecases/offer/offerReducer'
+import offerReducer from '../../app/usecases/offer/actions/offerReducer'
 import navigationReducer from '../navigation/navigationReducer'
 
 import {createLogger} from 'redux-logger';

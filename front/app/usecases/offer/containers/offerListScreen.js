@@ -2,12 +2,10 @@ import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, Button} from 'react-native';
 import {NavigationActions} from "react-navigation";
 import {connect} from 'react-redux'
+import { fetchOffersList } from "../actions/offerAction";
+import { OfferList } from "../components/offerList";
 
-import agent from 'infra/server/superagent'
-import { fetchOffersList } from "../offerAction";
-import navigationReducer from "../../../../infra/navigation/navigationReducer";
-
-class OfferList extends Component {
+class OfferListScreen extends Component {
 
 
     static navigationOptions = {
@@ -44,25 +42,20 @@ class OfferList extends Component {
     }
 
     render() {
+        const {
+            offersList
+        } = this.props
+
         return (
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: "yellowgreen",
-                    justifyContent: "center",
-                    alignItems: "center"
                 }}
             >
-                <Text>List</Text>
-                <TouchableOpacity
-                    style={{
-                        paddingVertical: 15,
-                        paddingHorizontal: 40,
-                    }}
-                    onPress={() => this.fetchMoreOffers()}
-                >
-                    <Text title="Load Detail">Load Detail</Text>
-                </TouchableOpacity>
+                <OfferList
+                    list={offersList}
+                    fetchMoreOffers={() => this.fetchMoreOffers()}
+                />
             </View>
         );
     }
@@ -81,5 +74,5 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OfferList);
+export default connect(mapStateToProps, mapDispatchToProps)(OfferListScreen);
 ;

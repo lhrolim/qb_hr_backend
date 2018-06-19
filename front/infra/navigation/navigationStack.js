@@ -1,6 +1,6 @@
 import { createStackNavigator } from "react-navigation";
 
-import OfferList from "../../app/usecases/offer/containers/offerList"
+import OfferList from "../../app/usecases/offer/containers/offerListScreen"
 import OfferSearch from "../../app/usecases/offer/containers/offerSearch"
 import OfferDetail from "../../app/usecases/offer/containers/offerDetail"
 
