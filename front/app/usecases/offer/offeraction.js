@@ -1,8 +1,11 @@
-/**
- * Action to toggle search screen for offers
- */
+import { FETCH_OFFERS } from './offeractiontypes';
+
 export const toggleSearch = () =>{
 
-}
+};
 
-//include additional actions here
+export const fetchOffers = offers => ({
+    type: FETCH_OFFERS,
+    payload: offers
+});
+

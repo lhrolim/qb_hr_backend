@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Button } from 'react-native';
 import { NavigationActions } from "react-navigation";
+import { connect } from 'react-redux';
 
 import { OfferListView } from '../components/offerListView';
+import OfferListInfiniteView from '../components/offerListInfiniteView';
 
 import agent from 'infra/server/superagent'
 
@@ -11,8 +13,11 @@ class OfferList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      offers: []
+      filteredTotal: 0,
+      total: 0
     };
+
+    this.render = this.render.bind(this);
   }
 
   static navigationOptions = {
@@ -27,35 +32,31 @@ class OfferList extends Component {
   };
 
   async componentDidMount() {
-    try {
-      const list = await agent.Offer.list();
-      this.setState({
-        offers: list
-      });
-      console.log(list);
-    } catch (err) {
-      console.log(err);
-    }
   }
 
   navigate = (offer) => {
-      const detailNav = NavigationActions.navigate({
-        routeName: "offerdetail",
-        params: { name: offer.uuid }
-      });
-      this.props.navigation.dispatch(detailNav);
-    };
+    const detailNav = NavigationActions.navigate({
+      routeName: "offerdetail",
+      params: { name: offer.uuid }
+    });
+    this.props.navigation.dispatch(detailNav);
+  };
 
   render() {
-
-    // TODO: Show message if no offers found
-
     return (
-      <View style={{flex: 1}}>
-        <OfferListView data={this.state.offers} onItemPress={this.navigate} />
+      <View style={{ flex: 1 }}>
+        <OfferListInfiniteView
+          listData={this.props.listData}
+          onItemPress={this.navigate}
+          filteredTotal={this.state.filteredTotal}
+          total={this.state.total} />
       </View>
     );
   }
 }
 
-export default OfferList;
+const mapStateToProps = (state) => {
+  return { listData: state.offerReducer.listData };
+};
+
+export default connect(mapStateToProps)(OfferList);
