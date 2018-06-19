@@ -50,6 +50,8 @@ chef/tmp/**/*
 
 .DS_Store
 .idea/*
+back/.idea/*
+front/.idea/*
 .sass-cache/
 /PRECOMPILED
 config/database.yml.mysql.mine
