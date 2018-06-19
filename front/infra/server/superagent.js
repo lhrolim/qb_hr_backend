@@ -57,7 +57,7 @@ const requests = {
 };
 
 const Offer = {
-  list: async () => await requests.get("offer"),
+  list: async page => await requests.get(`offer?page=${page}`),
   detail: async offerId => await requests.get(`offer/${offerId}`)
 };
 

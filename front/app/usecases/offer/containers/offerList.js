@@ -1,67 +1,85 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity,Button } from 'react-native';
-import { NavigationActions } from "react-navigation";
-import { connnect } from 'react-redux'
+import React, {Component} from 'react';
+import {View, Text, TouchableOpacity, Button} from 'react-native';
+import {NavigationActions} from "react-navigation";
+import {connect} from 'react-redux'
 
-import  agent from 'infra/server/superagent'
+import agent from 'infra/server/superagent'
+import { fetchOffersList } from "../offerAction";
+import navigationReducer from "../../../../infra/navigation/navigationReducer";
 
 class OfferList extends Component {
 
 
+    static navigationOptions = {
+        title: 'List',
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+    };
 
-  static navigationOptions = {
-    title: 'List',
-    headerStyle: {
-      backgroundColor: '#f4511e',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  };
 
+    navigate = () => {
+        const detailNav = NavigationActions.navigate({
+            routeName: "offerdetail",
+            params: {name: "My Detail..."}
+        });
+        this.props.navigation.dispatch(detailNav);
+    };
 
-  navigate = () => {
-    const detailNav = NavigationActions.navigate({
-      routeName: "offerdetail",
-      params: { name: "My Detail..." }
-    });
-    this.props.navigation.dispatch(detailNav);
-  };
-
-  async componentWillMount() {
-    //TODO: bring initial list
-    try {
-      const list = await agent.Offer.list();
-      console.log(list);
-    } catch (err) {
-      console.log(err);
+    fetchMoreOffers() {
+        const nextPage = this.props.currentPage + 1
+        this.props.fetchOffersList(nextPage)
     }
-  }
 
-  render() {
-    return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "yellowgreen",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <Text>List</Text>
-        <TouchableOpacity
-          style={{
-            paddingVertical: 15,
-            paddingHorizontal: 40,
-          }}
-          onPress={this.navigate}
-        >
-        <Button title="Load Detail" onPress={this.navigate}>Load Detail</Button>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+    componentWillMount() {
+        this.props.fetchOffersList(this.props.currentPage) //get first page
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('list', nextProps.offersList)
+    }
+
+    render() {
+        return (
+            <View
+                style={{
+                    flex: 1,
+                    backgroundColor: "yellowgreen",
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}
+            >
+                <Text>List</Text>
+                <TouchableOpacity
+                    style={{
+                        paddingVertical: 15,
+                        paddingHorizontal: 40,
+                    }}
+                    onPress={() => this.fetchMoreOffers()}
+                >
+                    <Text title="Load Detail">Load Detail</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
 }
 
-export default OfferList;
+function mapStateToProps(state) {
+    return {
+        offersList: state.offerReducer.offersList,
+        currentPage: state.offerReducer.currentPage
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchOffersList: (page) => dispatch(fetchOffersList(page))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OfferList);
+;
