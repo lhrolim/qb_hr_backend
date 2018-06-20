@@ -1,26 +1,43 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
-const smallMargin = 5;
-const normalMargin = 10;
-const backgroundColor = '#E5E0DD';
-const foregroundColor = '#FFFFFF';
-const detailColor = '#8AB0D0';
-const universityLogo = { width: 150, height: 50 };
-const normalFont = 12;
-const largeFont = 15;
+let smallSpacing = 5;
+let normalSpacing = 10;
+let largeSpacing = 22;
+let backgroundColor = '#E5E0DD';
+let foregroundColor = '#FFFFFF';
+let detailColor = '#8AB0D0';
+let buttonColor = '#5600E8';
+let successColor = '#03AC13';
+let universityLogo = { width: 150, height: 50 };
+let normalFont = 14;
+let largeFont = 18;
+let defaultBorderRadius = 4;
 
-export const styles = StyleSheet.create({
+let buttonStyle = {
+  borderRadius: defaultBorderRadius,
+  backgroundColor: buttonColor,
+  paddingLeft: largeSpacing,
+  paddingRight: largeSpacing,
+  paddingTop: normalSpacing,
+  paddingBottom: normalSpacing,
+  marginTop: normalSpacing,
+  alignSelf: 'stretch',
+  elevation: 5
+};
+
+const stylesheet = {
+  // Offer List Styles
   offerList: {
     backgroundColor: backgroundColor,
-    paddingTop: smallMargin,
-    paddingBottom: smallMargin
+    paddingTop: smallSpacing,
+    paddingBottom: smallSpacing
   },
   offerListHeader: {
     backgroundColor: foregroundColor,
-    paddingLeft: 15 + normalMargin,
-    paddingRight: 15 + normalMargin,
-    paddingTop: smallMargin,
-    paddingBottom: smallMargin,
+    paddingLeft: 15 + normalSpacing,
+    paddingRight: 15 + normalSpacing,
+    paddingTop: smallSpacing,
+    paddingBottom: smallSpacing,
     alignItems: 'flex-end'
   },
   offerListHeaderText: {
@@ -28,14 +45,14 @@ export const styles = StyleSheet.create({
   },
   offerCard: {
     backgroundColor: foregroundColor,
-    borderRadius: 15,
+    borderRadius: defaultBorderRadius,
     borderColor: detailColor,
     borderWidth: StyleSheet.hairlineWidth,
-    marginLeft: normalMargin,
-    marginRight: normalMargin,
-    marginTop: smallMargin,
-    marginBottom: smallMargin,
-    padding: 15
+    marginLeft: normalSpacing,
+    marginRight: normalSpacing,
+    marginTop: smallSpacing,
+    marginBottom: smallSpacing,
+    padding: largeSpacing
   },
   universityLogo: {
     flex: 1,
@@ -46,5 +63,47 @@ export const styles = StyleSheet.create({
     textDecorationLine: 'line-through',
     textDecorationStyle: 'solid',
     color: 'red'
+  },
+  // Offer Details Styles
+  offerDetail: {
+    backgroundColor: backgroundColor,
+    paddingTop: smallSpacing,
+    paddingBottom: smallSpacing,
+    paddingLeft: normalSpacing,
+    paddingRight: normalSpacing,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  modalContent: {
+    backgroundColor: foregroundColor,
+    padding: largeSpacing,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: defaultBorderRadius,
+    borderColor: detailColor
+  },
+  // General Styles
+  text: {
+    fontSize: normalFont,
+    textAlign: Platform.OS == 'android' ? 'center' : 'justify'
+  },
+  textLarge: {
+    fontSize: largeFont,
+    fontWeight: 'bold',
+    paddingTop: smallSpacing,
+    paddingBottom: smallSpacing
+  },
+  button: buttonStyle,
+  successButton: {
+      ...buttonStyle,
+      backgroundColor: successColor
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+    alignSelf: 'center'
   }
-});
+};
+
+export const styles = StyleSheet.create(stylesheet);

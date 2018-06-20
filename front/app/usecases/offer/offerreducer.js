@@ -1,4 +1,4 @@
-import { FETCH_OFFERS } from './offeractiontypes';
+import { FETCH_OFFERS, DETAIL_OFFER } from './offeractiontypes';
 
 const InitialState = {
   listData: {
@@ -7,7 +7,8 @@ const InitialState = {
     filtered_size: 0,
     total_size: 0,
     isFetching: false
-  }
+  },
+  offerDetail: {}
 };
 
 export default offerState = (state = InitialState, action) => {
@@ -27,7 +28,8 @@ export default offerState = (state = InitialState, action) => {
           }
         };
       }
-
+    case DETAIL_OFFER:
+      return { ...state, offerDetail: action.payload };
     default:
       return state;
   }

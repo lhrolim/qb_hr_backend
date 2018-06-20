@@ -1,1 +1,2 @@
-export const FETCH_OFFERS = "FETCH_OFFERS";
+export const FETCH_OFFERS = "FETCH_OFFERS",
+             DETAIL_OFFER = "DETAIL_OFFER";
