@@ -1,40 +1,36 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { Price } from "../../../components/price";
 import {Tags} from "../../../components/tags";
 import ArrowRight from '../../../../assets/img/arrow_right.png'
 import { periodsToTime } from "../../../helpers/time";
 
-export const OfferListItem = ({item}) => {
+export const OfferListItem = ({item, onPress}) => {
         return (
-            <View
-                style={{
-                    flex: 1,
-                    backgroundColor: 'white',
-                    elevation: 1,
-                    margin: 10,
-                    padding: 20,
-                    flexDirection: 'row',
-                }}
+            <TouchableWithoutFeedback
+                onPress={() => onPress(item.id)}
             >
-                <View>
-                    <Header
-                        image={item.university.logo}
-                        title={item.university.name}
-                        subtitle={'Bacharelado'}
-                    />
-                    <Tags
-                        tags={[item.course.kind, item.course.shift, periodsToTime(item.course.max_periods)]}
-                    />
-                    <Text style={[style.text, {marginBottom: 20, marginTop: 10}]}> Campus Unidade Sede (São José dos Campos, SP) </Text>
-                    <Price
-                        price={item.full_price}
-                        offer={item.offered_price}
-                        scholarship={item.discount_percentage}
-                    />
+                <View style={style.mainContainer}>
+                    <View>
+                        <Header
+                            image={item.university.logo}
+                            title={item.university.name}
+                            subtitle={'Bacharelado'}
+                        />
+                        <Tags
+                            tags={[item.course.kind, item.course.shift, periodsToTime(item.course.max_periods)]}
+                        />
+                        <Text style={[style.text, {marginBottom: 20, marginTop: 10}]}> Campus Unidade Sede (São José dos Campos, SP) </Text>
+                        <Price
+                            price={item.full_price}
+                            offer={item.offered_price}
+                            scholarship={item.discount_percentage}
+                        />
+                    </View>
+                    <Image style={style.arrow} source={ArrowRight}/>
                 </View>
-                <Image style={style.arrow} source={ArrowRight}/>
-            </View>
+
+            </TouchableWithoutFeedback>
         );
 }
 
@@ -70,5 +66,13 @@ const style = StyleSheet.create({
     },
     arrow: {
         alignSelf: 'center',
+    },
+    mainContainer: {
+        flex: 1,
+        backgroundColor: 'white',
+        elevation: 1,
+        margin: 10,
+        padding: 20,
+        flexDirection: 'row',
     }
 })

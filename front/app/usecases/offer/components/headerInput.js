@@ -3,10 +3,11 @@ import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import School from '../../../../assets/img/school.png'
 import Place from '../../../../assets/img/place.png'
 import Filter from '../../../../assets/img/filter.png'
+import colors from '../../../contants/colors'
 
 export const HeaderInput = () => {
     return (
-        <View style={{backgroundColor: '#16A7BF', paddingTop: 10}}>
+        <View style={{backgroundColor: colors.primaryAccent, paddingTop: 10}}>
             <SingleHeaderInput image={School} text={'O que você quer estudar?'}/>
             <SingleHeaderInput image={Place} text={'Onde você quer estudar?'}/>
             <View style={styles.filterContainer}>
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         height: 50,
-        backgroundColor: '#6DBECB',
+        backgroundColor: colors.secondaryAccent,
         alignItems: 'center',
         borderRadius: 5,
         marginBottom: 10,
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
         padding: 2,
         borderRadius: 5,
         flexDirection: 'row',
-        backgroundColor: '#eaebed',
+        backgroundColor: colors.lightGray,
         alignItems: 'center',
         alignSelf: 'baseline'
     }

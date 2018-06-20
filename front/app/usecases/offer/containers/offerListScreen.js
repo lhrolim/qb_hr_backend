@@ -5,14 +5,14 @@ import {connect} from 'react-redux'
 import { fetchOffersList } from "../actions/offerAction";
 import { OfferList } from "../components/offerList";
 import { HeaderInput } from "../components/headerInput";
-
+import colors from '../../../contants/colors'
 
 class OfferListScreen extends Component {
 
 
     static navigationOptions = {
         headerStyle: {
-            backgroundColor: '#16A7BF',
+            backgroundColor: colors.primaryAccent,
             height: 0,
         },
         headerTintColor: '#fff',
@@ -33,6 +33,10 @@ class OfferListScreen extends Component {
     fetchMoreOffers() {
         const nextPage = this.props.currentPage + 1
         this.props.fetchOffersList(nextPage)
+    }
+
+    openOfferDetail(id) {
+
     }
 
     componentWillMount() {
@@ -58,6 +62,7 @@ class OfferListScreen extends Component {
                 <OfferList
                     list={offersList}
                     fetchMoreOffers={() => this.fetchMoreOffers()}
+                    openOfferDetail={(id) => this.openOfferDetail(id)}
                 />
             </View>
         );

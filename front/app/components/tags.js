@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import colors from '../contants/colors'
 
 export const Tags = ({tags}) => {
-    console.log(tags)
     return (
         <View style={styles.container}>
             {
@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     },
     tag: {
         padding: 4,
-        backgroundColor: '#eaebed',
-        color: 'gray',
+        backgroundColor: colors.lightGray,
+        color: colors.gray,
         fontSize: 12,
         marginRight: 10,
         borderRadius: 10,
