@@ -31,14 +31,16 @@ const Api = () => {
 };
 
 const requests = {
-  del:async url =>
-    await superagent.del(`${Api()}${url}`)
+  del: async url =>
+    await superagent
+      .del(`${Api()}${url}`)
       .use(tokenPlugin)
       .then(responseBody)
       .catch(failure),
-  get: async url =>
+  get: async (url, params) =>
     await superagent
       .get(`${Api()}${url}`)
+      .query(params)
       .use(tokenPlugin)
       .then(responseBody)
       .catch(failure),
@@ -49,7 +51,7 @@ const requests = {
       .then(responseBody)
       .catch(failure),
   post: async (url, body) =>
-  await superagent
+    await superagent
       .post(`${Api()}${url}`, body)
       .use(tokenPlugin)
       .then(responseBody)
@@ -57,7 +59,7 @@ const requests = {
 };
 
 const Offer = {
-  list: async () => await requests.get("offer"),
+  list: async (params) => await requests.get("offer", params),
   detail: async offerId => await requests.get(`offer/${offerId}`)
 };
 
