@@ -4,14 +4,16 @@ import {NavigationActions} from "react-navigation";
 import {connect} from 'react-redux'
 import { fetchOffersList } from "../actions/offerAction";
 import { OfferList } from "../components/offerList";
+import { HeaderInput } from "../components/headerInput";
+
 
 class OfferListScreen extends Component {
 
 
     static navigationOptions = {
-        headerTitle: <Text>Teste</Text>,
         headerStyle: {
             backgroundColor: '#16A7BF',
+            height: 0,
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
@@ -52,6 +54,7 @@ class OfferListScreen extends Component {
                     flex: 1,
                 }}
             >
+                <HeaderInput />
                 <OfferList
                     list={offersList}
                     fetchMoreOffers={() => this.fetchMoreOffers()}
