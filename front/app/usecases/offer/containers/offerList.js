@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity, Button } from 'react-native';
 import { NavigationActions } from "react-navigation";
 import { connect } from 'react-redux';
 
-import { OfferListView } from '../components/offerListView';
 import OfferListInfiniteView from '../components/offerListInfiniteView';
 
 import agent from 'infra/server/superagent'
@@ -21,23 +20,13 @@ class OfferList extends Component {
   }
 
   static navigationOptions = {
-    title: 'List',
-    headerStyle: {
-      backgroundColor: '#0F9BB1',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
+    title: 'List'
   };
-
-  async componentDidMount() {
-  }
 
   navigate = (offer) => {
     const detailNav = NavigationActions.navigate({
       routeName: "offerdetail",
-      params: { name: offer.uuid }
+      params: { offerId: offer.id }
     });
     this.props.navigation.dispatch(detailNav);
   };

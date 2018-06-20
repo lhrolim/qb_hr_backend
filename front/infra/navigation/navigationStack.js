@@ -5,13 +5,21 @@ import OfferSearch from "../../app/usecases/offer/containers/offerSearch"
 import OfferDetail from "../../app/usecases/offer/containers/offerDetail"
 
 const navigator = createStackNavigator({
-  offerlist: { screen: OfferList },
-  offerdetail: { screen: OfferDetail },
-  offersearch: { screen: OfferSearch },
+  offerlist: OfferList,
+  offerdetail: OfferDetail,
+  offersearch: OfferSearch
 },
   {
     initialRouteName: 'offerlist',
-    
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#0F9BB1',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      }
+    }
   }
 );
 

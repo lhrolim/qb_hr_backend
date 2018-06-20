@@ -24,12 +24,10 @@ class OfferListInfiniteView extends React.Component {
     }
 
     async componentWillMount() {
-        // Initial fetch for data, assuming that listData is not yet populated.
         this._loadInitialContentAsync();
     }
 
     componentWillReceiveProps(nextProps) {
-        // Trigger a re-render when receiving new props (when redux has more data).
         this.setState({
             dataSource: this.getUpdatedDataSource(nextProps),
         });
