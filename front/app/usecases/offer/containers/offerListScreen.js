@@ -9,9 +9,9 @@ class OfferListScreen extends Component {
 
 
     static navigationOptions = {
-        title: 'List',
+        headerTitle: <Text>Teste</Text>,
         headerStyle: {
-            backgroundColor: '#f4511e',
+            backgroundColor: '#16A7BF',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
