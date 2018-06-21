@@ -8,13 +8,33 @@ class OfferSearch extends Component {
     _minOfferedPrice = 100;
     _maxOfferedPrice = 2000;
     _priceStep = 100;
+    _kinds = ['Presencial', 'EAD'];
 
     static navigationOptions = {
         title: 'Filtros de Bolsas'
     };
 
+    _mountPicker = (options) => options.map((opt, id) => {
+        return (<Picker.Item label={opt} value={opt} key={id} />);
+    });
+
     _updateFilters = (filter) => {
         this.props.dispatch(setOfferFilters(filter));
+    }
+
+    _handleBackButton = () => {
+        this.props.navigation.goBack();
+        return true;
+    };
+
+    componentDidMount() {
+        if (Platform.OS == "android") {
+            BackHandler.addEventListener('hardwareBackPress', this._handleBackButton);
+        }
+    }
+
+    componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this._handleBackButton);
     }
 
     render() {
@@ -45,24 +65,19 @@ class OfferSearch extends Component {
                 {this.props.offerFilters.discount_percentage_min &&
                     <Text>{this.props.offerFilters.discount_percentage_min}%</Text>}
 
+
+                <Text style={styles.textLarge}>Tipo de Curso</Text>
+                <Picker
+                    selectedValue={this.props.offerFilters.kind}
+                    style={{ alignSelf: 'stretch' }}
+                    onValueChange={(itemValue, itemIndex) => this._updateFilters({ kind: itemValue })}>
+                    {this._mountPicker(this._kinds)}
+                </Picker>
+
+
                 <Text>Filtros: {JSON.stringify(this.props.offerFilters)}</Text>
             </View>
         );
-    }
-
-    _handleBackButton = () => {
-        this.props.navigation.goBack();
-        return true;
-    };
-
-    componentDidMount() {
-        if (Platform.OS == "android") {
-            BackHandler.addEventListener('hardwareBackPress', this._handleBackButton);
-        }
-    }
-
-    componentWillUnmount() {
-        BackHandler.removeEventListener('hardwareBackPress', this._handleBackButton);
     }
 }
 
