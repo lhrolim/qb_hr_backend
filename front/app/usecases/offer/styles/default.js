@@ -83,6 +83,18 @@ const stylesheet = {
     borderRadius: defaultBorderRadius,
     borderColor: detailColor
   },
+  // Offer Search
+  offerSearch: {
+    flex: 1,
+    backgroundColor: backgroundColor,
+    paddingTop: smallSpacing,
+    paddingBottom: smallSpacing,
+    paddingLeft: normalSpacing,
+    paddingRight: normalSpacing,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-start'
+  },
   // General Styles
   text: {
     fontSize: normalFont,

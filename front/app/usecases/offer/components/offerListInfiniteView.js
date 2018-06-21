@@ -27,6 +27,12 @@ class OfferListInfiniteView extends React.Component {
         this._loadInitialContentAsync();
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.offerFilters !== this.props.offerFilters) {
+            this._loadInitialContentAsync();
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         this.setState({
             dataSource: this.getUpdatedDataSource(nextProps),
@@ -51,12 +57,13 @@ class OfferListInfiniteView extends React.Component {
     }
 
     _loadInitialContentAsync = async () => {
-        const result = await agent.Offer.list({ page: 0 });
+        const result = await agent.Offer.list({ ...this.props.offerFilters, page: 0 });
+        this.refs._listView.scrollTo({y: 0, x: 0, animated: true});
         this.props.dispatch(fetchOffers(result));
     }
 
     _loadMoreContentAsync = async () => {
-        const result = await agent.Offer.list({ page: this.props.listData.next_page });
+        const result = await agent.Offer.list({ ...this.props.offerFilters, page: this.props.listData.next_page });
         this.props.dispatch(fetchOffers(result));
     }
 
@@ -73,9 +80,10 @@ class OfferListInfiniteView extends React.Component {
 
     render() {
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 <OfferListHeaderView filteredTotal={this.props.listData.filtered_size} total={this.props.listData.total_size} />
                 <ListView
+                    ref="_listView"
                     style={styles.offerList}
                     renderScrollComponent={props => <InfiniteScrollView {...props} />}
                     dataSource={this.state.dataSource}
@@ -91,7 +99,10 @@ class OfferListInfiniteView extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { listData: state.offerReducer.listData };
+    return {
+        listData: state.offerReducer.listData,
+        offerFilters: state.offerReducer.offerFilters
+    };
 };
 
 export default connect(mapStateToProps)(OfferListInfiniteView);

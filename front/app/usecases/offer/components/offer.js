@@ -15,7 +15,8 @@ export class OfferListItem extends PureComponent {
                     <Image style={styles.universityLogo} source={{ uri: offer.university.logo }} resizeMode="contain" />
                     <Text style={styles.strikeThrough}>
                         {offer.discount_percentage}%
-                </Text>
+                    </Text>
+                    <Text>{offer.offered_price}</Text>
                 </View>
             </TouchableOpacity>
         );

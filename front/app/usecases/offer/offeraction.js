@@ -1,4 +1,4 @@
-import { FETCH_OFFERS, DETAIL_OFFER } from './offeractiontypes';
+import { FETCH_OFFERS, DETAIL_OFFER, SET_FILTERS } from './offeractiontypes';
 
 export const toggleSearch = () =>{
 
@@ -14,3 +14,7 @@ export const detailOffer = offer => ({
     payload: offer
 });
 
+export const setOfferFilters = filters => ({
+    type: SET_FILTERS,
+    payload: filters
+});

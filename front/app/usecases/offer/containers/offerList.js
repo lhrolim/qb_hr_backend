@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Button } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { NavigationActions } from "react-navigation";
 import { connect } from 'react-redux';
 
 import OfferListInfiniteView from '../components/offerListInfiniteView';
-
-import agent from 'infra/server/superagent'
 
 class OfferList extends Component {
 
@@ -20,10 +18,10 @@ class OfferList extends Component {
   }
 
   static navigationOptions = {
-    title: 'List'
+    title: 'Quero Bolsa'
   };
 
-  navigate = (offer) => {
+  _goToDetail = (offer) => {
     const detailNav = NavigationActions.navigate({
       routeName: "offerdetail",
       params: { offerId: offer.id }
@@ -31,12 +29,21 @@ class OfferList extends Component {
     this.props.navigation.dispatch(detailNav);
   };
 
+  _goToFilter = () => {
+    const filterNav = NavigationActions.navigate({
+      routeName: "offersearch",
+      params: {}
+    });
+    this.props.navigation.dispatch(filterNav);
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <Button onPress={this._goToFilter} title="Filtrar" />
         <OfferListInfiniteView
           listData={this.props.listData}
-          onItemPress={this.navigate}
+          onItemPress={this._goToDetail}
           filteredTotal={this.state.filteredTotal}
           total={this.state.total} />
       </View>
