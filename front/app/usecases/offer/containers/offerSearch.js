@@ -9,6 +9,7 @@ class OfferSearch extends Component {
     _maxOfferedPrice = 2000;
     _priceStep = 100;
     _kinds = ['Presencial', 'EAD'];
+    _levels = ['Graduação', 'Pós-Graduação'];
 
     static navigationOptions = {
         title: 'Filtros de Bolsas'
@@ -74,6 +75,14 @@ class OfferSearch extends Component {
                     {this._mountPicker(this._kinds)}
                 </Picker>
 
+
+                <Text style={styles.textLarge}>Formação</Text>
+                <Picker
+                    selectedValue={this.props.offerFilters.level}
+                    style={{ alignSelf: 'stretch' }}
+                    onValueChange={(itemValue, itemIndex) => this._updateFilters({ level: itemValue })}>
+                    {this._mountPicker(this._levels)}
+                </Picker>
 
                 <Text>Filtros: {JSON.stringify(this.props.offerFilters)}</Text>
             </View>
