@@ -17,6 +17,9 @@ export class OfferListItem extends PureComponent {
                         {offer.discount_percentage}%
                     </Text>
                     <Text>{offer.offered_price}</Text>
+                    <Text>{offer.course.shift}</Text>
+                    <Text>{offer.course.level}</Text>
+                    <Text>{offer.course.kind}</Text>
                 </View>
             </TouchableOpacity>
         );

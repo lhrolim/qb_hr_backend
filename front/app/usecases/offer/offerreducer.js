@@ -1,4 +1,4 @@
-import { FETCH_OFFERS, DETAIL_OFFER, SET_FILTERS } from './offeractiontypes';
+import { FETCH_OFFERS, DETAIL_OFFER, SET_FILTERS, REMOVE_FILTER } from './offeractiontypes';
 
 const InitialState = {
   listData: {
@@ -23,7 +23,7 @@ const InitialState = {
 export default offerState = (state = InitialState, action) => {
   switch (action.type) {
     case FETCH_OFFERS:
-      if(action.payload.length == 0) {
+      if (action.payload.length == 0) {
         return { ...state, listData: InitialState.listData };
       }
       else if (action.payload.next_page == 1)
@@ -43,7 +43,11 @@ export default offerState = (state = InitialState, action) => {
     case DETAIL_OFFER:
       return { ...state, offerDetail: action.payload };
     case SET_FILTERS:
-    return { ...state, offerFilters: { ...state.offerFilters, ...action.payload } };
+      return { ...state, offerFilters: { ...state.offerFilters, ...action.payload } };
+    case REMOVE_FILTER:
+      let newFilter = { ...state.offerFilters };
+      delete newFilter[action.payload];
+      return { ...state, offerFilters: { ...newFilter } };
     default:
       return state;
   }

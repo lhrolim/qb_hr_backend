@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, BackHandler, View, Text, Picker, Slider } from 'react-native';
 import { connect } from 'react-redux';
-import { setOfferFilters } from "../offeraction";
+import { setOfferFilters, removeOfferFilter } from "../offeraction";
 import { styles } from '../styles/default';
 
 class OfferSearch extends Component {
@@ -21,8 +21,17 @@ class OfferSearch extends Component {
     });
 
     _updateFilters = (filter) => {
-        this.props.dispatch(setOfferFilters(filter));
-    }
+        // Assumes filter is always an object with a single key
+        let key = Object.keys(filter)[0];
+        if (filter[key] == null) {
+            this.props.dispatch(removeOfferFilter(key));
+        }
+        else {
+            this.props.dispatch(setOfferFilters(filter));
+        }
+    };
+
+    _pickerItemDefault = (<Picker.Item label="Selecione..." value={null} key="-1" />);
 
     _handleBackButton = () => {
         this.props.navigation.goBack();
@@ -33,11 +42,11 @@ class OfferSearch extends Component {
         if (Platform.OS == "android") {
             BackHandler.addEventListener('hardwareBackPress', this._handleBackButton);
         }
-    }
+    };
 
     componentWillUnmount() {
         BackHandler.removeEventListener('hardwareBackPress', this._handleBackButton);
-    }
+    };
 
     render() {
         return (
@@ -68,21 +77,23 @@ class OfferSearch extends Component {
                     <Text>{this.props.offerFilters.discount_percentage_min}%</Text>}
 
 
-                <Text style={styles.textLarge}>Tipo de Curso</Text>
-                <Picker
-                    selectedValue={this.props.offerFilters.kind}
-                    style={{ alignSelf: 'stretch' }}
-                    onValueChange={(itemValue, itemIndex) => this._updateFilters({ kind: itemValue })}>
-                    {this._mountPicker(this._kinds)}
-                </Picker>
-
-
                 <Text style={styles.textLarge}>Formação</Text>
                 <Picker
                     selectedValue={this.props.offerFilters.level}
                     style={{ alignSelf: 'stretch' }}
                     onValueChange={(itemValue, itemIndex) => this._updateFilters({ level: itemValue })}>
+                    {this._pickerItemDefault}
                     {this._mountPicker(this._levels)}
+                </Picker>
+
+
+                <Text style={styles.textLarge}>Tipo de Curso</Text>
+                <Picker
+                    selectedValue={this.props.offerFilters.kind}
+                    style={{ alignSelf: 'stretch' }}
+                    onValueChange={(itemValue, itemIndex) => this._updateFilters({ kind: itemValue })}>
+                    {this._pickerItemDefault}
+                    {this._mountPicker(this._kinds)}
                 </Picker>
 
 
@@ -91,6 +102,7 @@ class OfferSearch extends Component {
                     selectedValue={this.props.offerFilters.shift}
                     style={{ alignSelf: 'stretch' }}
                     onValueChange={(itemValue, itemIndex) => this._updateFilters({ shift: itemValue })}>
+                    {this._pickerItemDefault}
                     {this._mountPicker(this._shifts)}
                 </Picker>
 
