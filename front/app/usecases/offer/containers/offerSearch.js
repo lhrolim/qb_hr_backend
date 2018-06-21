@@ -32,6 +32,19 @@ class OfferSearch extends Component {
                 {this.props.offerFilters.offered_price_max &&
                     <Text>Até R$ {this.props.offerFilters.offered_price_max},00</Text>}
 
+
+                <Text style={styles.textLarge}>Desconto Mínimo</Text>
+                <Slider
+                    style={{ alignSelf: 'stretch' }}
+                    minimumValue={0}
+                    maximumValue={100}
+                    step={1}
+                    value={this.props.offerFilters.discount_percentage_min}
+                    onValueChange={(value) => this._updateFilters({ discount_percentage_min: value })}
+                />
+                {this.props.offerFilters.discount_percentage_min &&
+                    <Text>{this.props.offerFilters.discount_percentage_min}%</Text>}
+
                 <Text>Filtros: {JSON.stringify(this.props.offerFilters)}</Text>
             </View>
         );

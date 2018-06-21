@@ -22,7 +22,7 @@ module OfferHelper
 
     unscoped = unscoped.where(api_hash)
 
-    unscoped.where("discount_percentage >= ?", discount_min) unless discount_min == nil
+    unscoped = unscoped.where("discount_percentage >= ?", discount_min) unless discount_min == nil
     unscoped.where("offered_price <= ?", offered_max)
   end
 end
