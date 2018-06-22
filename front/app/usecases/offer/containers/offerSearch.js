@@ -3,7 +3,7 @@ import { Platform, BackHandler, View, Text, Picker, Slider, PixelRatio } from 'r
 import { connect } from 'react-redux';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 
-import { setOfferFilters, removeOfferFilter, setSubjects } from "../offeraction";
+import { setOfferFilters, removeOfferFilter, setSubjects, setUniversities } from "../offeraction";
 import { styles } from '../styles/default';
 
 import agent from 'infra/server/superagent'
@@ -39,15 +39,24 @@ class OfferSearch extends Component {
         return true;
     };
 
-    async componentWillMount() {        
-        const result = await agent.Subject.list();
-        const subjects = result.map((s) => {
+    async componentWillMount() {
+        const subjectResult = await agent.Subject.list();
+        const subjects = subjectResult.map((s) => {
             return {
                 id: s.id,
                 name: s.name
             }
         });
         this.props.dispatch(setSubjects(subjects));
+
+        const universityResult = await agent.University.list();
+        const universities = universityResult.map((u) => {
+            return {
+                id: u.id,
+                name: u.name
+            }
+        });
+        this.props.dispatch(setUniversities(universities));
     }
 
     componentDidMount() {
@@ -129,6 +138,9 @@ class OfferSearch extends Component {
                 <Text style={styles.textLarge}>Área</Text>
                 {this._singleSelect(this.props.subjects, 'Área', 'subject_id')}
 
+                <Text style={styles.textLarge}>Faculdade</Text>
+                {this._singleSelect(this.props.universities, 'Faculdade', 'university_id')}
+
                 <Text style={styles.textLarge}>Valor da mensalidade</Text>
                 <Slider
                     style={{ alignSelf: 'stretch' }}
@@ -169,8 +181,11 @@ class OfferSearch extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { offerFilters: state.offerReducer.offerFilters, subjects: state.offerReducer.subjects };
+    return {
+        offerFilters: state.offerReducer.offerFilters,
+        subjects: state.offerReducer.subjects,
+        universities: state.offerReducer.universities
+    };
 };
 
 export default connect(mapStateToProps)(OfferSearch);
-

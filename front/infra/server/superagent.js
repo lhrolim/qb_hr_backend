@@ -68,7 +68,9 @@ const Subject = {
   list: async () => await requests.get('subject')
 };
 
-const University = {};
+const University = {
+  list: async () => await requests.get('university')
+};
 
 export default {
   Offer,

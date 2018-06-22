@@ -1,4 +1,4 @@
-import { FETCH_OFFERS, DETAIL_OFFER, SET_FILTERS, REMOVE_FILTER, SET_SUBJECTS } from './offeractiontypes';
+import { FETCH_OFFERS, DETAIL_OFFER, SET_FILTERS, REMOVE_FILTER, SET_SUBJECTS, SET_UNIVERSITIES } from './offeractiontypes';
 
 const InitialState = {
   listData: {
@@ -9,15 +9,7 @@ const InitialState = {
     isFetching: false
   },
   offerDetail: {},
-  offerFilters: {
-    // university_id: 1,
-    // course_id: 1,
-    // kind: ['Presencial', 'EAD'],
-    // shift: ['Manhã', 'Tarde', 'Noite', 'Virtual'],
-    // level: ['Graduação', 'Pós-Graduação'],
-    // discount_percentage_min: 10.0,
-    // offered_price_max: 1500.00
-  },
+  offerFilters: {},
   subjects: []
 };
 
@@ -51,6 +43,8 @@ export default offerState = (state = InitialState, action) => {
       return { ...state, offerFilters: { ...newFilter } };
     case SET_SUBJECTS:
       return { ...state, subjects: action.payload };
+    case SET_UNIVERSITIES:
+      return { ...state, universities: action.payload };
     default:
       return state;
   }
