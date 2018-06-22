@@ -34,3 +34,29 @@ export const fetchOffersList = (page) => async (dispatch) =>{
         dispatch(fetchOffersListError(err))
     }
 }
+
+// Offer detail
+
+const offerDetailStart = () => ({
+    type: type.OFFER_DETAIL_START,
+})
+
+const offerDetailSuccess = (offer) => ({
+    type: type.OFFER_DETAIL_SUCCESS,
+    payload: offer,
+})
+
+const offerDetailError = (err) => ({
+    type: type.OFFER_DETAIL_ERROR,
+    payload: err,
+})
+
+export const getOfferDetail = (id) => async (dispatch) =>{
+    try {
+        dispatch(offerDetailStart())
+        const offer = await agent.Offer.detail(id);
+        dispatch(offerDetailSuccess(offer))
+    } catch (err) {
+        dispatch(offerDetailError(err))
+    }
+}

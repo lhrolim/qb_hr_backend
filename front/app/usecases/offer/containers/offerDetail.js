@@ -2,52 +2,91 @@ import React, {Component} from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {HeaderDetail} from "../components/offerDetail/header";
 import defaultStyles from '../../../contants/styles'
-import { Price } from '../../../components/price'
+import {Price} from '../../../components/price'
 import Button from '../../../components/button'
+import {connect} from "react-redux";
+import {getOfferDetail} from "../actions/offerAction";
+import {periodsToTime} from "../../../helpers/time";
 
 class OfferDetail extends Component {
 
     static navigationOptions = {
-        headerStyle: {
-            position: 'absolute'
-        },
+        headerTransparent: true,
+        headerTintColor: 'white'
     };
+
+    componentWillMount() {
+        this.props.getOfferDetail(this.props.navigation.state.params.id)
+    }
 
 
     render() {
+
+        const {
+            offerDetail
+        } = this.props
+
+        let course
+        let university
+        if (offerDetail) {
+            course = offerDetail.course
+            university = offerDetail.university
+        }
+
         return (
-            <View style={{justifyContent: 'flex-end', alignItems: 'center'}}>
-                <ScrollView
-                >
-                    <HeaderDetail navigation={this.props.navigation}/>
-                    <OfferBody/>
+            <View>
+                {offerDetail &&
+                <View style={{justifyContent: 'flex-end', alignItems: 'center'}}>
 
-                </ScrollView>
+                    <ScrollView
+                    >
+                        <HeaderDetail
+                            tags={course ?
+                                [course.kind, course.shift, periodsToTime(course.max_periods)] :
+                                null
+                            }
+                            logo={university && university.logo}
+                            name={university && university.name}
+                            description={university && university.description}
+                        />
+                        <OfferBody
+                            courseName={course && offerDetail.course.name}
+                            courseDescription={course && course.description}
+                        />
 
-                <DetailFooter />
+                    </ScrollView>
+
+                    <DetailFooter
+                        price={offerDetail.full_price}
+                        offer={offerDetail.offered_price}
+                        discount={offerDetail.discount_percentage}
+                    />
+                </View>
+                }
             </View>
+
 
         );
     }
 }
 
-const OfferBody = () => (
-    <View style={{padding: 20, paddingBottom: 150}}>
-        <Text style={defaultStyles.boldText}> Sobre Engenharia de Computação</Text>
+const OfferBody = ({courseName, courseDescription}) => (
+    <View style={{padding: 20, paddingBottom: 160}}>
+        <Text style={defaultStyles.boldText}> Sobre {courseName}</Text>
         <Text
-            style={defaultStyles.text}> textãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãotextãolalalalalalalalaldassdasaddsaasddsasadalalala </Text>
+            style={defaultStyles.text}> {courseDescription} </Text>
     </View>
 )
 
-const DetailFooter = () => (
+const DetailFooter = ({price, offer, discount}) => (
     <View style={styles.footerContainer}>
         <Price
-            price={'100.00'}
-            offer={'50.00'}
-            scholarship={'50.0'}
+            price={price}
+            offer={offer}
+            scholarship={discount}
         />
-        <Text style={defaultStyles.boldText} > Uma economia de 8 mil reais</Text>
-        <Button title={'Quer essa bolsa'} onPress={() => console.log('click')}/>
+        <Text style={defaultStyles.boldText}> Uma economia de {price - offer} reais</Text>
+        <Button title={'Quero essa Bolsa'} onPress={() => console.log('click')}/>
     </View>
 )
 
@@ -61,4 +100,16 @@ const styles = StyleSheet.create({
     }
 })
 
-export default OfferDetail;
+function mapStateToProps(state) {
+    return {
+        offerDetail: state.offerReducer.offerDetail
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getOfferDetail: (id) => dispatch(getOfferDetail(id))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OfferDetail);

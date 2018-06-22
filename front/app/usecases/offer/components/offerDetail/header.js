@@ -1,21 +1,22 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import School from '../../../../../assets/img/school.png'
 import Arrow from '../../../../../assets/img/arrow_right.png'
 import defaultStyles from '../../../../contants/styles'
-import { Tags } from "../../../../components/tags";
+import {Tags} from "../../../../components/tags";
 import {periodsToTime} from "../../../../helpers/time";
 
-export const HeaderDetail = ({navigation}) => {
+export const HeaderDetail = ({tags, logo, name, description}) => {
     return (
-        <View >
-            <TopImage navigation={navigation}/>
-            <OfferInfo />
+        <View>
+            <TopImage logo={logo}/>
+            <OfferInfo name={name} description={description}/>
             <View style={{height: 40, justifyContent: 'center'}}>
-                <Tags
-                    tags={['presencial', 'noite', '5 anos']}
+                {tags && <Tags
+                    tags={tags}
                     center={true}
                 />
+                }
             </View>
 
         </View>
@@ -23,22 +24,19 @@ export const HeaderDetail = ({navigation}) => {
 }
 
 
-const TopImage = ({navigation}) => (
+const TopImage = ({logo}) => (
     <View style={styles.imageContainer}>
-        <Image style={styles.backgroundImage} source={{uri: 'http://www.slate.com/content/dam/slate/articles/health_and_science/science/2012/07/120712_SCI_NIGHTSKY.jpg.CROP.rectangle3-large.jpg'}}>
+        <Image style={styles.backgroundImage}
+               source={{uri: 'http://www.slate.com/content/dam/slate/articles/health_and_science/science/2012/07/120712_SCI_NIGHTSKY.jpg.CROP.rectangle3-large.jpg'}}>
         </Image>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image source={Arrow} style={styles.backImage}/>
-        </TouchableOpacity>
-
-        <Image source={School} style={styles.detailImage}/>
+        <Image source={{uri: logo}} style={styles.detailImage}/>
     </View>
 )
 
-const OfferInfo = () => (
+const OfferInfo = ({name, description}) => (
     <View style={defaultStyles.centralizedContainer}>
-        <Text style={defaultStyles.boldTitle}> Titulo Lindo </Text>
-        <Text style={defaultStyles.text}> Descrição linda maravihosa </Text>
+        <Text style={defaultStyles.boldTitle}> {name} </Text>
+        {description && <Text style={defaultStyles.text}> {description} </Text>}
     </View>
 )
 
@@ -55,13 +53,7 @@ const styles = StyleSheet.create({
         width: 100,
         alignSelf: 'center',
         marginTop: 80,
-        backgroundColor: 'black',
         position: 'absolute',
         borderRadius: 20,
-    },
-    backImage: {
-        position: 'absolute',
-        margin: 15,
-        height: 60,
     },
 })

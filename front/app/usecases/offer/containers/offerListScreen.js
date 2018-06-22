@@ -36,7 +36,7 @@ class OfferListScreen extends Component {
     }
 
     openOfferDetail(id) {
-        this.props.navigation.navigate('offerdetail')
+        this.props.navigation.navigate('offerdetail', {id: id})
     }
 
     componentWillMount() {
@@ -83,4 +83,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OfferListScreen);
-;

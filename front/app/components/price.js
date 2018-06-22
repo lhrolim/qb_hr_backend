@@ -18,10 +18,12 @@ export const Price = ({price, offer, scholarship}) => {
 }
 
 const fixPriceFormat = (str) => {
+    if (!str) return ''
     return str.replace('.', ',')
 }
 
 const fixPercentageFormat = (str) => {
+    if (!str) return ''
     return parseInt(str)
 }
 
