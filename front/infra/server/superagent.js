@@ -1,8 +1,9 @@
-import superagentPromise from "superagent-promise";
-import _superagent from "superagent";
-import store from "../core/store";
+import superagentPromise from 'superagent-promise';
+import _superagent from 'superagent';
+import qs from 'qs';
+import store from '../core/store';
 
-const props = require("./server.json");
+const props = require('./server.json');
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
@@ -27,7 +28,7 @@ const tokenPlugin = req => {
 
 const Api = () => {
   var env = process.env.NODE_ENV;
-  return env === "development" ? props.dev : props.prod;
+  return env === 'development' ? props.dev : props.prod;
 };
 
 const requests = {
@@ -40,7 +41,7 @@ const requests = {
   get: async (url, params) =>
     await superagent
       .get(`${Api()}${url}`)
-      .query(params)
+      .query(qs.stringify(params, {arrayFormat: 'brackets'}))
       .use(tokenPlugin)
       .then(responseBody)
       .catch(failure),
@@ -59,7 +60,7 @@ const requests = {
 };
 
 const Offer = {
-  list: async (params) => await requests.get("offer", params),
+  list: async (params) => await requests.get('offer', params),
   detail: async offerId => await requests.get(`offer/${offerId}`)
 };
 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Platform, BackHandler, View, Text, Picker, Slider } from 'react-native';
+import { Platform, BackHandler, View, Text, Picker, Slider, PixelRatio } from 'react-native';
 import { connect } from 'react-redux';
+import SectionedMultiSelect from 'react-native-sectioned-multi-select';
+
 import { setOfferFilters, removeOfferFilter } from "../offeraction";
 import { styles } from '../styles/default';
 
@@ -16,10 +18,6 @@ class OfferSearch extends Component {
         title: 'Filtros de Bolsas'
     };
 
-    _mountPicker = (options) => options.map((opt, id) => {
-        return (<Picker.Item label={opt} value={opt} key={id} />);
-    });
-
     _updateFilters = (filter) => {
         // Assumes filter is always an object with a single key
         let key = Object.keys(filter)[0];
@@ -31,7 +29,15 @@ class OfferSearch extends Component {
         }
     };
 
+    _mountPicker = (options) => options.map((opt, id) => {
+        return (<Picker.Item label={opt} value={opt} key={id} />);
+    });
+
     _pickerItemDefault = (<Picker.Item label="Selecione..." value={null} key="-1" />);
+
+    _multiSelectItems = (items) => items.map((item, id) => {
+        return { id: id, name: item };
+    });
 
     _handleBackButton = () => {
         this.props.navigation.goBack();
@@ -47,6 +53,53 @@ class OfferSearch extends Component {
     componentWillUnmount() {
         BackHandler.removeEventListener('hardwareBackPress', this._handleBackButton);
     };
+
+    _getSelectText = (values) => {
+        if (values && values.length)
+            return values.join(', ');
+        else
+            return 'Selecione...';
+    }
+
+    _multiSelect(values, label, stateKey) {
+        items = [{
+            name: label,
+            id: 0,
+            children: values.map((el) => {
+                return {
+                    name: el,
+                    id: el
+                }
+            })
+        }];
+
+        return (
+            <SectionedMultiSelect
+                style={{ alignSelf: 'stretch', flexDirection: 'row' }}
+                styles={{
+                    itemText: styles.selectItemText,
+                    subItemText: styles.selectSubItemText,
+                    container: styles.selectModalContent,
+                    backdrop: styles.selectModalBackdrop,
+                    scrollView: styles.selectModalScrollView,
+                    button: styles.button,
+                    confirmText: styles.buttonText
+                }}
+                items={items}
+                uniqueKey='id'
+                subKey='children'
+                selectText={this._getSelectText(this.props.offerFilters[stateKey])}
+                alwaysShowSelectText={true}
+                showDropDowns={false}
+                readOnlyHeadings={true}
+                onSelectedItemsChange={(selectedValues) => this._updateFilters({ [stateKey]: selectedValues })}
+                selectedItems={this.props.offerFilters[stateKey]}
+                hideSearch={true}
+                confirmText='Pronto'
+                showChips={false}
+            />
+        );
+    }
 
     render() {
         return (
@@ -76,35 +129,14 @@ class OfferSearch extends Component {
                 {this.props.offerFilters.discount_percentage_min &&
                     <Text>{this.props.offerFilters.discount_percentage_min}%</Text>}
 
-
                 <Text style={styles.textLarge}>Formação</Text>
-                <Picker
-                    selectedValue={this.props.offerFilters.level}
-                    style={{ alignSelf: 'stretch' }}
-                    onValueChange={(itemValue, itemIndex) => this._updateFilters({ level: itemValue })}>
-                    {this._pickerItemDefault}
-                    {this._mountPicker(this._levels)}
-                </Picker>
-
-
-                <Text style={styles.textLarge}>Tipo de Curso</Text>
-                <Picker
-                    selectedValue={this.props.offerFilters.kind}
-                    style={{ alignSelf: 'stretch' }}
-                    onValueChange={(itemValue, itemIndex) => this._updateFilters({ kind: itemValue })}>
-                    {this._pickerItemDefault}
-                    {this._mountPicker(this._kinds)}
-                </Picker>
-
+                {this._multiSelect(this._levels, 'Formação', 'level')}
 
                 <Text style={styles.textLarge}>Período</Text>
-                <Picker
-                    selectedValue={this.props.offerFilters.shift}
-                    style={{ alignSelf: 'stretch' }}
-                    onValueChange={(itemValue, itemIndex) => this._updateFilters({ shift: itemValue })}>
-                    {this._pickerItemDefault}
-                    {this._mountPicker(this._shifts)}
-                </Picker>
+                {this._multiSelect(this._shifts, 'Período', 'shift')}
+
+                <Text style={styles.textLarge}>Tipo de Curso</Text>
+                {this._multiSelect(this._kinds, 'Tipo de Curso', 'kind')}
 
                 <Text>Filtros: {JSON.stringify(this.props.offerFilters)}</Text>
             </View>

@@ -42,6 +42,6 @@ class Api::OfferController < ActionController::Base
 
   private 
     def offer_list_parameters
-      params.permit(:university_id, :course_id, :kind, :level, :shift, :discount_percentage_min, :offered_price_max, :page)
+      params.permit(:university_id, :course_id, :discount_percentage_min, :offered_price_max, :page, :shift => [], :kind => [], :level => [])
     end
 end

@@ -1,8 +1,8 @@
 module OfferHelper
   def build_search_criteria(params)
     unscoped = Offer.unscoped.includes(:university, :course).joins(:university, :course)
-
-    api_hash = params.permit("university_id", "course_id", "kind", "level", "shift", "discount_percentage_min", "offered_price_max").to_h
+    
+    api_hash = params.permit(:university_id, :course_id, :discount_percentage_min, :offered_price_max, :shift => [], :kind => [], :level => []).to_h
 
     courses_hash = {}
 

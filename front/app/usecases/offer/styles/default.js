@@ -1,4 +1,4 @@
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, PixelRatio } from 'react-native';
 
 let smallSpacing = 5;
 let normalSpacing = 10;
@@ -79,21 +79,47 @@ const stylesheet = {
     backgroundColor: foregroundColor,
     padding: largeSpacing,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'stretch',
     borderRadius: defaultBorderRadius,
     borderColor: detailColor
   },
   // Offer Search
   offerSearch: {
     flex: 1,
+    justifyContent: 'center',
     backgroundColor: backgroundColor,
     paddingTop: smallSpacing,
     paddingBottom: smallSpacing,
     paddingLeft: normalSpacing,
-    paddingRight: normalSpacing,
-    flex: 1,
+    paddingRight: normalSpacing
+  },
+  selectModalBackdrop: {
+    flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'flex-start'
+    alignItems: 'center',
+  },
+  selectModalContent: {
+    backgroundColor: foregroundColor,
+    padding: largeSpacing,
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    borderRadius: defaultBorderRadius,
+    borderColor: detailColor,
+    flex: 0,
+    height: 'auto'
+  },
+  selectModalScrollView: {
+    flex: 0,
+    height: 'auto'
+  },
+  selectItemText: {
+    fontSize: largeFont,
+    fontWeight: 'bold'
+  },
+  selectsubItemText: {
+    fontSize: normalFont,
+    borderBottomColor: detailColor,
+    borderBottomWidth: 10,
   },
   // General Styles
   text: {
@@ -108,10 +134,11 @@ const stylesheet = {
   },
   button: buttonStyle,
   successButton: {
-      ...buttonStyle,
-      backgroundColor: successColor
+    ...buttonStyle,
+    backgroundColor: successColor
   },
   buttonText: {
+    fontSize: normalFont,
     color: '#FFFFFF',
     fontWeight: 'bold',
     alignSelf: 'center'

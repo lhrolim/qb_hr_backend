@@ -60,7 +60,7 @@ class OfferDetail extends Component {
         <Modal isVisible={this.state.isModalVisible}
           onBackdropPress={() => this._toggleModal()}>
           <View style={styles.modalContent}>
-            <Text style={styles.textLarge}>Parabéns!</Text>
+            <Text style={[styles.textLarge, { textAlign: 'center' }]}>Parabéns!</Text>
             <Text style={styles.text}>
               <Text>Você conseguiu a bolsa para</Text>
               <Text style={{ fontWeight: "bold" }}> {this.props.offerDetail.course ? this.props.offerDetail.course.name : ''}</Text> <Text>em</Text>
