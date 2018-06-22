@@ -28,8 +28,12 @@ const fetchOffersListError = (err) => ({
 export const fetchOffersList = (page) => async (dispatch) =>{
     try {
         dispatch(fetchOffersListStart(page))
-        const list = await agent.Offer.list(page);
-        dispatch(fetchOffersListSuccess(list))
+        const res = await agent.Offer.list(page);
+        if (res.err) {
+            dispatch(fetchOffersListError(res.err))
+        } else {
+            dispatch(fetchOffersListSuccess(res.data))
+        }
     } catch (err) {
         dispatch(fetchOffersListError(err))
     }
@@ -54,8 +58,12 @@ const offerDetailError = (err) => ({
 export const getOfferDetail = (id) => async (dispatch) =>{
     try {
         dispatch(offerDetailStart())
-        const offer = await agent.Offer.detail(id);
-        dispatch(offerDetailSuccess(offer))
+        const res = await agent.Offer.detail(id);
+        if (res.err) {
+            dispatch(offerDetailError(res.err))
+        } else {
+            dispatch(offerDetailSuccess(res.data))
+        }
     } catch (err) {
         dispatch(offerDetailError(err))
     }

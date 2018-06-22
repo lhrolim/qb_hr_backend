@@ -19,6 +19,12 @@ class OfferDetail extends Component {
         this.props.getOfferDetail(this.props.navigation.state.params.id)
     }
 
+    componentWillReceiveProps(nextProps){
+        if (nextProps.errDetail) {
+            this.props.navigation.goBack()
+            alert('Ocorreu um erro, por favor tente novamente.')
+        }
+    }
 
     render() {
 
@@ -102,7 +108,8 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
     return {
-        offerDetail: state.offerReducer.offerDetail
+        offerDetail: state.offerReducer.offerDetail,
+        errDetail: state.offerReducer.errDetail,
     }
 }
 

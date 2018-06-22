@@ -14,5 +14,11 @@ export default defaultStyles ={
     boldText: {
         fontSize: 16,
         fontWeight: 'bold',
+    },
+    errorPlaceholder: {
+        fontSize: 18,
+        color: 'gray',
+        padding: 40,
+        alignSelf: 'center',
     }
 }

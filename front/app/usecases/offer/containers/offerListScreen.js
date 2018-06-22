@@ -4,6 +4,7 @@ import {NavigationActions} from "react-navigation";
 import {connect} from 'react-redux'
 import { fetchOffersList } from "../actions/offerAction";
 import { OfferList } from "../components/offerList/offerList";
+import defaultStyles from '../../../contants/styles'
 import { HeaderInput } from "../components/offerList/headerInput";
 import colors from '../../../contants/colors'
 
@@ -43,13 +44,10 @@ class OfferListScreen extends Component {
         this.props.fetchOffersList(this.props.currentPage) //get first page
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log('list', nextProps.offersList)
-    }
-
     render() {
         const {
-            offersList
+            offersList,
+            err,
         } = this.props
 
         return (
@@ -59,6 +57,7 @@ class OfferListScreen extends Component {
                 }}
             >
                 <HeaderInput />
+                {err && <Text style={defaultStyles.errorPlaceholder}> Ocorreu um erro ao carregar a lista. Por favor, tente novamente.</Text>}
                 <OfferList
                     list={offersList}
                     fetchMoreOffers={() => this.fetchMoreOffers()}
@@ -72,6 +71,7 @@ class OfferListScreen extends Component {
 function mapStateToProps(state) {
     return {
         offersList: state.offerReducer.offersList,
+        err: state.offerReducer.err,
         currentPage: state.offerReducer.currentPage
     }
 }
