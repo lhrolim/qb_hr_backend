@@ -7,6 +7,7 @@ import { OfferList } from "../components/offerList/offerList";
 import defaultStyles from '../../../contants/styles'
 import { HeaderInput } from "../components/offerList/headerInput";
 import colors from '../../../contants/colors'
+import Loading from "../../../components/loading";
 
 class OfferListScreen extends Component {
 
@@ -40,6 +41,10 @@ class OfferListScreen extends Component {
         this.props.navigation.navigate('offerdetail', {id: id})
     }
 
+    refresh() {
+        this.props.fetchOffersList(0, true)
+    }
+
     componentWillMount() {
         this.props.fetchOffersList(this.props.currentPage) //get first page
     }
@@ -48,6 +53,7 @@ class OfferListScreen extends Component {
         const {
             offersList,
             err,
+            loading,
         } = this.props
 
         return (
@@ -62,6 +68,8 @@ class OfferListScreen extends Component {
                     list={offersList}
                     fetchMoreOffers={() => this.fetchMoreOffers()}
                     openOfferDetail={(id) => this.openOfferDetail(id)}
+                    loading={loading}
+                    onRefresh={() => this.refresh()}
                 />
             </View>
         );
@@ -72,13 +80,14 @@ function mapStateToProps(state) {
     return {
         offersList: state.offerReducer.offersList,
         err: state.offerReducer.err,
+        loading: state.offerReducer.loading,
         currentPage: state.offerReducer.currentPage
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetchOffersList: (page) => dispatch(fetchOffersList(page))
+        fetchOffersList: (page, clear) => dispatch(fetchOffersList(page, clear))
     }
 }
 

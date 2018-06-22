@@ -20,19 +20,28 @@ const fetchOffersListSuccess = (offersList) => ({
     payload: offersList,
 })
 
+const clearAndFetchOffersListSuccess = (offersList) => ({
+    type: type.CLEAR_AND_FETCH_OFFERS_LIST_SUCCESS,
+    payload: offersList,
+})
+
 const fetchOffersListError = (err) => ({
     type: type.FECTH_OFFERS_LIST_ERROR,
     payload: err,
 })
 
-export const fetchOffersList = (page) => async (dispatch) =>{
+export const fetchOffersList = (page, clear) => async (dispatch) =>{
     try {
         dispatch(fetchOffersListStart(page))
         const res = await agent.Offer.list(page);
         if (res.err) {
             dispatch(fetchOffersListError(res.err))
         } else {
-            dispatch(fetchOffersListSuccess(res.data))
+            if (clear) {
+                dispatch(clearAndFetchOffersListSuccess(res.data))
+            } else {
+                dispatch(fetchOffersListSuccess(res.data))
+            }
         }
     } catch (err) {
         dispatch(fetchOffersListError(err))

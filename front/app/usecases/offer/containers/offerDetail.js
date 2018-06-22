@@ -7,6 +7,7 @@ import Button from '../../../components/button'
 import {connect} from "react-redux";
 import {getOfferDetail} from "../actions/offerAction";
 import {periodsToTime} from "../../../helpers/time";
+import Loading from '../../../components/loading'
 
 class OfferDetail extends Component {
 
@@ -29,7 +30,8 @@ class OfferDetail extends Component {
     render() {
 
         const {
-            offerDetail
+            offerDetail,
+            loading,
         } = this.props
 
         let course
@@ -40,9 +42,10 @@ class OfferDetail extends Component {
         }
 
         return (
-            <View>
+            <View style={{flex: 1}}>
+                <Loading show={loading}/>
                 {offerDetail &&
-                <View style={{justifyContent: 'flex-end', alignItems: 'center'}}>
+                <View style={{justifyContent: 'flex-end', alignItems: 'center', backgroundColor: 'white'}}>
 
                     <ScrollView
                     >
@@ -110,6 +113,7 @@ function mapStateToProps(state) {
     return {
         offerDetail: state.offerReducer.offerDetail,
         errDetail: state.offerReducer.errDetail,
+        loading: state.offerReducer.loadingDetail,
     }
 }
 
