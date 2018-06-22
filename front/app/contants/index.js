@@ -1,0 +1,1 @@
+export const SUPRESS_WARNINGS = true // Set this to false to see the yellow warning inside de app.

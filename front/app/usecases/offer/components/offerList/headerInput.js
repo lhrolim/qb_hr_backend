@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import School from '../../../../assets/img/school.png'
-import Place from '../../../../assets/img/place.png'
-import Filter from '../../../../assets/img/filter.png'
-import colors from '../../../contants/colors'
+import School from '../../../../../assets/img/school.png'
+import Place from '../../../../../assets/img/place.png'
+import Filter from '../../../../../assets/img/filter.png'
+import colors from '../../../../contants/colors'
 
 export const HeaderInput = () => {
     return (

@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import colors from '../contants/colors'
 
-export const Tags = ({tags}) => {
+export const Tags = ({tags, center}) => {
     return (
-        <View style={styles.container}>
+        <View style={center ? [styles.container, {justifyContent: 'center'}] : styles.container}>
             {
                 tags.map((item) => (
                     <Text style={styles.tag}> {item.toUpperCase()} </Text>

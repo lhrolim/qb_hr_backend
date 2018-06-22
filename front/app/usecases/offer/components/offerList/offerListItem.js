@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableWithoutFeedback } from 'react-native';
-import { Price } from "../../../components/price";
-import {Tags} from "../../../components/tags";
-import ArrowRight from '../../../../assets/img/arrow_right.png'
-import { periodsToTime } from "../../../helpers/time";
+import { Price } from "../../../../components/price";
+import {Tags} from "../../../../components/tags";
+import ArrowRight from '../../../../../assets/img/arrow_right.png'
+import { periodsToTime } from "../../../../helpers/time";
 
 export const OfferListItem = ({item, onPress}) => {
         return (

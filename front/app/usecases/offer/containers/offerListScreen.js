@@ -3,8 +3,8 @@ import {View, Text, TouchableOpacity, Button} from 'react-native';
 import {NavigationActions} from "react-navigation";
 import {connect} from 'react-redux'
 import { fetchOffersList } from "../actions/offerAction";
-import { OfferList } from "../components/offerList";
-import { HeaderInput } from "../components/headerInput";
+import { OfferList } from "../components/offerList/offerList";
+import { HeaderInput } from "../components/offerList/headerInput";
 import colors from '../../../contants/colors'
 
 class OfferListScreen extends Component {
@@ -36,7 +36,7 @@ class OfferListScreen extends Component {
     }
 
     openOfferDetail(id) {
-
+        this.props.navigation.navigate('offerdetail')
     }
 
     componentWillMount() {
