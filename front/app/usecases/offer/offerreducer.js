@@ -1,4 +1,4 @@
-import { FETCH_OFFERS, DETAIL_OFFER, SET_FILTERS, REMOVE_FILTER } from './offeractiontypes';
+import { FETCH_OFFERS, DETAIL_OFFER, SET_FILTERS, REMOVE_FILTER, SET_SUBJECTS } from './offeractiontypes';
 
 const InitialState = {
   listData: {
@@ -17,7 +17,8 @@ const InitialState = {
     // level: ['Graduação', 'Pós-Graduação'],
     // discount_percentage_min: 10.0,
     // offered_price_max: 1500.00
-  }
+  },
+  subjects: []
 };
 
 export default offerState = (state = InitialState, action) => {
@@ -48,6 +49,8 @@ export default offerState = (state = InitialState, action) => {
       let newFilter = { ...state.offerFilters };
       delete newFilter[action.payload];
       return { ...state, offerFilters: { ...newFilter } };
+    case SET_SUBJECTS:
+      return { ...state, subjects: action.payload };
     default:
       return state;
   }

@@ -3,8 +3,10 @@ import { Platform, BackHandler, View, Text, Picker, Slider, PixelRatio } from 'r
 import { connect } from 'react-redux';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 
-import { setOfferFilters, removeOfferFilter } from "../offeraction";
+import { setOfferFilters, removeOfferFilter, setSubjects } from "../offeraction";
 import { styles } from '../styles/default';
+
+import agent from 'infra/server/superagent'
 
 class OfferSearch extends Component {
     _minOfferedPrice = 100;
@@ -18,10 +20,13 @@ class OfferSearch extends Component {
         title: 'Filtros de Bolsas'
     };
 
+    _singleFilters = ['university_id', 'subject_id'];
     _updateFilters = (filter) => {
         // Assumes filter is always an object with a single key
         let key = Object.keys(filter)[0];
-        if (filter[key] == null) {
+
+        // Handle filter removal when the value is null or undefined
+        if (!filter[key]) {
             this.props.dispatch(removeOfferFilter(key));
         }
         else {
@@ -29,20 +34,21 @@ class OfferSearch extends Component {
         }
     };
 
-    _mountPicker = (options) => options.map((opt, id) => {
-        return (<Picker.Item label={opt} value={opt} key={id} />);
-    });
-
-    _pickerItemDefault = (<Picker.Item label="Selecione..." value={null} key="-1" />);
-
-    _multiSelectItems = (items) => items.map((item, id) => {
-        return { id: id, name: item };
-    });
-
     _handleBackButton = () => {
         this.props.navigation.goBack();
         return true;
     };
+
+    async componentWillMount() {        
+        const result = await agent.Subject.list();
+        const subjects = result.map((s) => {
+            return {
+                id: s.id,
+                name: s.name
+            }
+        });
+        this.props.dispatch(setSubjects(subjects));
+    }
 
     componentDidMount() {
         if (Platform.OS == "android") {
@@ -61,18 +67,7 @@ class OfferSearch extends Component {
             return 'Selecione...';
     }
 
-    _multiSelect(values, label, stateKey) {
-        items = [{
-            name: label,
-            id: 0,
-            children: values.map((el) => {
-                return {
-                    name: el,
-                    id: el
-                }
-            })
-        }];
-
+    _renderSelect = (items, stateKey, single) => {
         return (
             <SectionedMultiSelect
                 style={{ alignSelf: 'stretch', flexDirection: 'row' }}
@@ -97,13 +92,43 @@ class OfferSearch extends Component {
                 hideSearch={true}
                 confirmText='Pronto'
                 showChips={false}
+                single={!!single}
             />
         );
+    }
+
+    _multiSelect = (values, label, stateKey) => {
+        items = [{
+            name: label,
+            id: 0,
+            children: values ? values.map((el) => {
+                return {
+                    name: el,
+                    id: el
+                }
+            }) : []
+        }];
+
+        return this._renderSelect(items, stateKey, false);
+    }
+
+    _singleSelect = (values, label, stateKey) => {
+        items = [{
+            name: label,
+            id: 0,
+            children: values
+        }];
+
+        return this._renderSelect(items, stateKey, true);
     }
 
     render() {
         return (
             <View style={styles.offerSearch}>
+
+                <Text style={styles.textLarge}>Área</Text>
+                {this._singleSelect(this.props.subjects, 'Área', 'subject_id')}
+
                 <Text style={styles.textLarge}>Valor da mensalidade</Text>
                 <Slider
                     style={{ alignSelf: 'stretch' }}
@@ -115,7 +140,6 @@ class OfferSearch extends Component {
                 />
                 {this.props.offerFilters.offered_price_max &&
                     <Text>Até R$ {this.props.offerFilters.offered_price_max},00</Text>}
-
 
                 <Text style={styles.textLarge}>Desconto Mínimo</Text>
                 <Slider
@@ -145,7 +169,7 @@ class OfferSearch extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return { offerFilters: state.offerReducer.offerFilters };
+    return { offerFilters: state.offerReducer.offerFilters, subjects: state.offerReducer.subjects };
 };
 
 export default connect(mapStateToProps)(OfferSearch);

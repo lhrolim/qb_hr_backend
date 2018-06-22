@@ -16,6 +16,7 @@ export class OfferListItem extends PureComponent {
                     <Text style={styles.strikeThrough}>
                         {offer.discount_percentage}%
                     </Text>
+                    <Text>{offer.course.name}</Text>
                     <Text>{offer.offered_price}</Text>
                     <Text>{offer.course.shift}</Text>
                     <Text>{offer.course.level}</Text>

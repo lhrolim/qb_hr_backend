@@ -64,12 +64,14 @@ const Offer = {
   detail: async offerId => await requests.get(`offer/${offerId}`)
 };
 
-const Course = {};
+const Subject = {
+  list: async () => await requests.get('subject')
+};
 
 const University = {};
 
 export default {
   Offer,
-  Course,
+  Subject,
   University
 };

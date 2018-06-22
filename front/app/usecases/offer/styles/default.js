@@ -11,6 +11,7 @@ let successColor = '#03AC13';
 let universityLogo = { width: 150, height: 50 };
 let normalFont = 14;
 let largeFont = 18;
+let largerFont = 20;
 let defaultBorderRadius = 4;
 
 let buttonStyle = {
@@ -113,11 +114,11 @@ const stylesheet = {
     height: 'auto'
   },
   selectItemText: {
-    fontSize: largeFont,
+    fontSize: largerFont,
     fontWeight: 'bold'
   },
   selectsubItemText: {
-    fontSize: normalFont,
+    fontSize: largeFont,
     borderBottomColor: detailColor,
     borderBottomWidth: 10,
   },
