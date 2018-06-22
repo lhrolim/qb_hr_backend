@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Platform, BackHandler, View, Text, Picker, Slider, PixelRatio } from 'react-native';
+import { Platform, BackHandler, View, Text, Slider, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 
-import { setOfferFilters, removeOfferFilter, setSubjects, setUniversities } from "../offeraction";
+import { setOfferFilters, removeOfferFilter, clearOfferFilters, setSubjects, setUniversities } from "../offeraction";
 import { styles } from '../styles/default';
 
 import agent from 'infra/server/superagent'
@@ -33,6 +33,9 @@ class OfferSearch extends Component {
             this.props.dispatch(setOfferFilters(filter));
         }
     };
+    _clearFilters = () => {
+        this.props.dispatch(clearOfferFilters());
+    }
 
     _handleBackButton = () => {
         this.props.navigation.goBack();
@@ -173,6 +176,18 @@ class OfferSearch extends Component {
 
                 <Text style={styles.textLarge}>Tipo de Curso</Text>
                 {this._multiSelect(this._kinds, 'Tipo de Curso', 'kind')}
+
+                <TouchableOpacity
+                    style={
+                        Object.keys(this.props.offerFilters).length == 0 ?
+                            styles.disabledButton :
+                            styles.button
+                    }
+                    onPress={this._clearFilters}
+                    disabled={Object.keys(this.props.offerFilters).length == 0}
+                >
+                    <Text style={styles.buttonText}>Limpar Filtros</Text>
+                </TouchableOpacity>
 
                 <Text>Filtros: {JSON.stringify(this.props.offerFilters)}</Text>
             </View>

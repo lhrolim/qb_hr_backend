@@ -8,6 +8,7 @@ let foregroundColor = '#FFFFFF';
 let detailColor = '#8AB0D0';
 let buttonColor = '#5600E8';
 let successColor = '#03AC13';
+let disabledColor = '#CCCCCC';
 let universityLogo = { width: 150, height: 50 };
 let normalFont = 14;
 let largeFont = 18;
@@ -137,6 +138,11 @@ const stylesheet = {
   successButton: {
     ...buttonStyle,
     backgroundColor: successColor
+  },
+  disabledButton: {
+    ...buttonStyle,
+    backgroundColor: disabledColor,
+    elevation: 0
   },
   buttonText: {
     fontSize: normalFont,

@@ -1,4 +1,4 @@
-import { FETCH_OFFERS, DETAIL_OFFER, SET_FILTERS, REMOVE_FILTER, SET_SUBJECTS, SET_UNIVERSITIES } from './offeractiontypes';
+import { FETCH_OFFERS, DETAIL_OFFER, SET_FILTERS, REMOVE_FILTER, SET_SUBJECTS, SET_UNIVERSITIES, CLEAR_FILTERS } from './offeractiontypes';
 
 const InitialState = {
   listData: {
@@ -41,6 +41,8 @@ export default offerState = (state = InitialState, action) => {
       let newFilter = { ...state.offerFilters };
       delete newFilter[action.payload];
       return { ...state, offerFilters: { ...newFilter } };
+    case CLEAR_FILTERS:
+      return { ...state, offerFilters: {} };
     case SET_SUBJECTS:
       return { ...state, subjects: action.payload };
     case SET_UNIVERSITIES:
