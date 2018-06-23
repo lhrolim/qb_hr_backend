@@ -20,8 +20,8 @@ class OfferSearch extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedDiscount: 0,
-            selectedMaxPrice: this._maxOfferedPrice
+            selectedDiscount: this.props.offerFilters.discount_percentage_min ? this.props.offerFilters.discount_percentage_min : 0,
+            selectedMaxPrice: this.props.offerFilters.offered_price_max ? this.props.offerFilters.offered_price_max : this._maxOfferedPrice
         }
     }
 
