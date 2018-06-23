@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ListView, RefreshControl } from 'react-native';
+import { View, Text, ListView, RefreshControl, ActivityIndicator } from 'react-native';
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 import { connect } from 'react-redux';
 import { fetchOffers } from "../offeraction";
@@ -17,6 +17,7 @@ class OfferListInfiniteView extends React.Component {
             dataSource: new ListView.DataSource({
                 rowHasChanged: this._rowHasChanged.bind(this),
             }),
+            showEmpty: false
         };
 
         // Update the data store with initial data.
@@ -57,9 +58,19 @@ class OfferListInfiniteView extends React.Component {
     }
 
     _loadInitialContentAsync = async () => {
+        // Clean previous offers from view
+        this.props.dispatch(fetchOffers([]));
+        this.setState({ showEmpty: false });
+
+        // Fetch offers from API
         const result = await agent.Offer.list({ ...this.props.offerFilters, page: 0 });
-        this.refs._listView.scrollTo({y: 0, x: 0, animated: true});
         this.props.dispatch(fetchOffers(result));
+
+        // Prevent Empty View from showing before we can render the list
+        // TODO: Work with callbacks for Rendering
+        setTimeout(() => {
+            this.setState({ showEmpty: true });
+        }, 1000);
     }
 
     _loadMoreContentAsync = async () => {
@@ -78,14 +89,10 @@ class OfferListInfiniteView extends React.Component {
         );
     }
 
-    render() {
-        return (
-            <View style={styles.offerListBackground}>
-                <OfferListHeaderView 
-                    onPress={this.props.onHeaderPress}
-                    filteredTotal={this.props.listData.filtered_size}
-                    total={this.props.listData.total_size} 
-                />
+    _renderBody = () => {
+        // Show list if there are items
+        if (this.props.listData && this.props.listData.total_size) {
+            return (
                 <ListView
                     ref="_listView"
                     style={styles.offerList}
@@ -97,6 +104,38 @@ class OfferListInfiniteView extends React.Component {
                     onLoadMoreAsync={this._loadMoreContentAsync.bind(this)}
                     enableEmptySections={true}
                 />
+            );
+        }
+        // show empty view if there are no items and we finished loading
+        else if (this.state.showEmpty) {
+            return (
+                <View style={styles.offerCard}>
+                    <View style={styles.offerCardContent}>
+                        <Text style={styles.text}>Nenhuma bolsa encontrada :(</Text>
+                        <Text style={styles.text}>Mude os filtros para encontrar bolsas interessantes</Text>
+                    </View>
+                </View>
+            );
+        }
+        // Show loading indicator
+        else {
+            return (
+                <View style={{ padding: 10 }}>
+                    <ActivityIndicator size="large" />
+                </View>
+            );
+        }
+    }
+
+    render() {
+        return (
+            <View style={styles.offerListBackground}>
+                <OfferListHeaderView
+                    onPress={this.props.onHeaderPress}
+                    filteredTotal={this.props.listData.filtered_size}
+                    total={this.props.listData.total_size}
+                />
+                {this._renderBody()}
             </View>
         );
     }
