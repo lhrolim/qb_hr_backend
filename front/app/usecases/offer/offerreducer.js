@@ -8,7 +8,9 @@ const InitialState = {
     total_size: 0,
     isFetching: false
   },
-  offerDetail: {},
+  offerDetail: {
+    course: {}
+  },
   offerFilters: {},
   subjects: []
 };

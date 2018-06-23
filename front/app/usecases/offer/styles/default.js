@@ -3,11 +3,11 @@ import { Platform, StyleSheet, PixelRatio } from 'react-native';
 let smallSpacing = 5;
 let normalSpacing = 10;
 let largeSpacing = 22;
+let normalColor = '#000000';
 let mainColor = '#00879B';
 let backgroundColor = '#DCDADB';
 let foregroundColor = '#FFFFFF';
 let detailColor = '#EAEBED';
-let buttonColor = '#5600E8';
 let successColor = '#03AC13';
 let disabledColor = '#969C9C';
 let normalFont = 14;
@@ -17,8 +17,8 @@ let hugeFont = 22;
 let defaultBorderRadius = 4;
 
 let buttonStyle = {
-  borderRadius: defaultBorderRadius,
-  backgroundColor: buttonColor,
+  borderRadius: 100,
+  backgroundColor: mainColor,
   paddingLeft: largeSpacing,
   paddingRight: largeSpacing,
   paddingTop: normalSpacing,
@@ -106,6 +106,7 @@ const stylesheet = {
     justifyContent: 'flex-start'
   },
   offerCardText: {
+    paddingTop: smallSpacing,
     paddingRight: largeSpacing,
     fontSize: normalFont
   },
@@ -152,7 +153,6 @@ const stylesheet = {
   offerDetail: {
     backgroundColor: backgroundColor,
     paddingTop: smallSpacing,
-    paddingBottom: smallSpacing,
     paddingLeft: normalSpacing,
     paddingRight: normalSpacing,
     flex: 1,
@@ -166,6 +166,49 @@ const stylesheet = {
     alignItems: 'stretch',
     borderRadius: defaultBorderRadius,
     borderColor: detailColor
+  },
+  detailScroll: {
+    marginBottom: -30,
+    paddingTop: normalSpacing,
+    paddingLeft: normalSpacing,
+    paddingRight: normalSpacing
+  },
+  detailScrollContainer: { paddingBottom: 45 },
+  detailOverlay: {
+    alignSelf: 'stretch',
+    backgroundColor: foregroundColor,
+    borderTopEndRadius: 50,
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+    borderTopStartRadius: 50,
+    paddingLeft: normalSpacing,
+    paddingRight: normalSpacing,
+    paddingTop: largeSpacing,
+    paddingBottom: 15
+  },
+  detailPriceContainer: {
+    paddingLeft: largeSpacing,
+    paddingRight: largeSpacing,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  courseInfo: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    marginTop: largeSpacing
+  },
+  rulesAndInfos: {
+    borderRadius: 20,
+    backgroundColor: detailColor,
+    alignItems: 'center',
+    padding: smallSpacing,
+    marginTop: normalSpacing
+  },
+  courseDescriptionContainer: {
+    alignItems: 'stretch',
+    flexDirection: 'column',
+    marginTop: normalSpacing
   },
   // Offer Search
   offerSearch: {
@@ -231,6 +274,24 @@ const stylesheet = {
     color: '#FFFFFF',
     fontWeight: 'bold',
     alignSelf: 'center'
+  },
+  offerButtonText: {
+    fontSize: hugeFont,
+    color: '#FFFFFF',
+    alignSelf: 'center'
+  },
+  roundImageContainer: {
+    backgroundColor: '#FFF',
+    borderRadius: 50,
+    padding: 22,
+    paddingVertical: 15,
+    flex: 1
+  },
+  highlightColor: {
+    color: mainColor
+  },
+  normalColor: {
+    color: normalColor
   }
 };
 

@@ -4,6 +4,7 @@ import FitImage from 'react-native-fit-image';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { styles } from '../styles/default';
+import priceFormatter from 'infra/helpers/formatting';
 
 export class OfferListItem extends PureComponent {
     _onPress = () => {
@@ -14,11 +15,7 @@ export class OfferListItem extends PureComponent {
         const offer = this.props.offer;
         const formattedPeriod = `${offer.course.max_periods / 2} ANOS`;
         const formattedDiscount = Number(offer.discount_percentage).toFixed(0);
-        const priceFormatter = {
-            format: (price) => {
-                return `R$ ${Number(price).toFixed(2).replace('.', ',')}`;
-            }
-        };
+        
         return (
             <TouchableOpacity onPress={this._onPress}>
                 <View style={styles.offerCard}>
