@@ -31,8 +31,7 @@ class OfferList extends Component {
 
   _goToFilter = () => {
     const filterNav = NavigationActions.navigate({
-      routeName: "offersearch",
-      params: {}
+      routeName: "offersearch"
     });
     this.props.navigation.dispatch(filterNav);
   }
@@ -40,10 +39,11 @@ class OfferList extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Button onPress={this._goToFilter} title="Filtrar" />
+        {/* <Button onPress={this._goToFilter} title="Filtrar" /> */}
         <OfferListInfiniteView
           listData={this.props.listData}
           onItemPress={this._goToDetail}
+          onHeaderPress={this._goToFilter}
           filteredTotal={this.state.filteredTotal}
           total={this.state.total} />
       </View>

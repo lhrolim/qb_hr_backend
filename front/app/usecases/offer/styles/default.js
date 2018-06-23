@@ -3,16 +3,17 @@ import { Platform, StyleSheet, PixelRatio } from 'react-native';
 let smallSpacing = 5;
 let normalSpacing = 10;
 let largeSpacing = 22;
-let backgroundColor = '#E5E0DD';
+let mainColor = '#00879B';
+let backgroundColor = '#DCDADB';
 let foregroundColor = '#FFFFFF';
-let detailColor = '#8AB0D0';
+let detailColor = '#EAEBED';
 let buttonColor = '#5600E8';
 let successColor = '#03AC13';
-let disabledColor = '#CCCCCC';
-let universityLogo = { width: 150, height: 50 };
+let disabledColor = '#969C9C';
 let normalFont = 14;
 let largeFont = 18;
 let largerFont = 20;
+let hugeFont = 22;
 let defaultBorderRadius = 4;
 
 let buttonStyle = {
@@ -29,42 +30,123 @@ let buttonStyle = {
 
 const stylesheet = {
   // Offer List Styles
+  offerListBackground: {
+    flex: 1,
+    backgroundColor: backgroundColor
+  },
   offerList: {
-    backgroundColor: backgroundColor,
-    paddingTop: smallSpacing,
-    paddingBottom: smallSpacing
+    backgroundColor: backgroundColor
   },
   offerListHeader: {
-    backgroundColor: foregroundColor,
-    paddingLeft: 15 + normalSpacing,
-    paddingRight: 15 + normalSpacing,
-    paddingTop: smallSpacing,
-    paddingBottom: smallSpacing,
-    alignItems: 'flex-end'
+    margin: normalSpacing,
+    borderRadius: 20,
+    backgroundColor: detailColor,
+    padding: 15 + normalSpacing,
+    paddingVertical: 10 + normalSpacing,
+    marginBottom: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   offerListHeaderText: {
     fontSize: largeFont
   },
+  filterArrow: {
+    fontSize: largeFont,
+    flexDirection: 'column',
+    alignSelf: 'flex-end',
+    marginLeft: -3,
+    paddingTop: 4,
+  },
   offerCard: {
     backgroundColor: foregroundColor,
-    borderRadius: defaultBorderRadius,
+    borderRadius: 50,
     borderColor: detailColor,
     borderWidth: StyleSheet.hairlineWidth,
-    marginLeft: normalSpacing,
-    marginRight: normalSpacing,
-    marginTop: smallSpacing,
-    marginBottom: smallSpacing,
-    padding: largeSpacing
+    margin: normalSpacing,
+    padding: largeSpacing,
+    elevation: 5,
+    flexDirection: 'row'
   },
-  universityLogo: {
+  offerCardHeader: {
     flex: 1,
-    width: universityLogo.width,
-    height: universityLogo.height
+    flexDirection: 'row'
   },
-  strikeThrough: {
+  universityLogo: {},
+  universityName: {
+    flex: 1,
+    fontSize: largerFont,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignSelf: 'center'
+  },
+  offerCardBody: {
+    paddingVertical: normalSpacing,
+    flexDirection: 'column'
+  },
+  offerCardFooter: {
+    flex: 1,
+    paddingTop: normalSpacing,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  offerCardContent: {
+    flex: 9
+  },
+  offerCardArrow: {
+    flex: 1,
+    marginRight: -10,
+    justifyContent: 'center'
+  },
+  offerCardArrowIcon: {
+    color: mainColor,
+    fontSize: 40
+  },
+  offerCardInfoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
+  },
+  offerCardText: {
+    paddingRight: largeSpacing,
+    fontSize: normalFont
+  },
+  courseName: {
+    fontSize: hugeFont,
+    fontWeight: 'bold',
+    textAlign: 'left',
+    color: mainColor
+  },
+  offerDiscount: {
+    flexDirection: 'column',
+    justifyContent: 'flex-end'
+  },
+  offerDiscountNumber: {
+    fontSize: hugeFont * 2,
+    height: hugeFont * 2,
+    lineHeight: hugeFont * 2.2,
+    alignSelf: 'flex-end'
+  },
+  offerDiscountText: {
+    fontSize: normalFont,
+    lineHeight: normalFont,
+    alignSelf: 'center'
+  },
+  offerPrices: {
+    flexDirection: 'column',
+    justifyContent: 'flex-end'
+  },
+  offerDiscountPrice: {
+    fontSize: hugeFont,
+    fontWeight: 'bold',
+    color: mainColor,
+    textAlign: 'right'
+  },
+  offerPrice: {
+    fontSize: normalFont,
     textDecorationLine: 'line-through',
     textDecorationStyle: 'solid',
-    color: 'red'
+    color: disabledColor,
+    textAlign: 'right',
+    lineHeight: normalFont
   },
   // Offer Details Styles
   offerDetail: {

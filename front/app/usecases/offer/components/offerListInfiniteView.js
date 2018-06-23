@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { fetchOffers } from "../offeraction";
 import { styles } from '../styles/default';
 
-import { OfferListItem } from '../components/offer';
+import { OfferListItem } from '../components/offerListViewItem';
 import { OfferListHeaderView } from '../components/offerListViewHeader';
 
 import agent from 'infra/server/superagent'
@@ -80,8 +80,12 @@ class OfferListInfiniteView extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1 }}>
-                <OfferListHeaderView filteredTotal={this.props.listData.filtered_size} total={this.props.listData.total_size} />
+            <View style={styles.offerListBackground}>
+                <OfferListHeaderView 
+                    onPress={this.props.onHeaderPress}
+                    filteredTotal={this.props.listData.filtered_size}
+                    total={this.props.listData.total_size} 
+                />
                 <ListView
                     ref="_listView"
                     style={styles.offerList}
