@@ -43,7 +43,6 @@ const stylesheet = {
     backgroundColor: detailColor,
     padding: 15 + normalSpacing,
     paddingVertical: 10 + normalSpacing,
-    marginBottom: 0,
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
@@ -62,7 +61,9 @@ const stylesheet = {
     borderRadius: 50,
     borderColor: detailColor,
     borderWidth: StyleSheet.hairlineWidth,
-    margin: normalSpacing,
+    marginLeft: normalSpacing,
+    marginRight: normalSpacing,
+    marginBottom: largeSpacing,
     padding: largeSpacing,
     elevation: 5,
     flexDirection: 'row'
@@ -216,7 +217,6 @@ const stylesheet = {
     justifyContent: 'center',
     backgroundColor: backgroundColor,
     paddingTop: smallSpacing,
-    paddingBottom: smallSpacing,
     paddingLeft: normalSpacing,
     paddingRight: normalSpacing
   },
@@ -247,6 +247,32 @@ const stylesheet = {
     fontSize: largeFont,
     borderBottomColor: detailColor,
     borderBottomWidth: 10,
+  },
+  filters: {
+    flex: 1,
+    marginTop: normalSpacing,
+    marginBottom: -50,
+    backgroundColor: detailColor,
+    borderTopLeftRadius: 20,
+    borderTopStartRadius: 20,
+    borderTopRightRadius: 20,
+    borderTopEndRadius: 20,
+    paddingTop: largeSpacing,
+  },
+  filtersContainer: {
+    paddingLeft: largeSpacing,
+    paddingRight: largeSpacing,
+    paddingBottom: 65
+  },
+  buttonOverlay: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#FFFFFF',
+    borderTopLeftRadius: 50,
+    borderTopStartRadius: 50,
+    borderTopRightRadius: 50,
+    borderTopEndRadius: 50,
+    padding: 20
   },
   // General Styles
   text: {

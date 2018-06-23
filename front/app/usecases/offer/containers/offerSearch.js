@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Platform, BackHandler, View, Text, Slider, TouchableOpacity } from 'react-native';
+import { Platform, BackHandler, View, Text, Slider, TouchableOpacity, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import SectionedMultiSelect from 'react-native-sectioned-multi-select';
 
 import { setOfferFilters, removeOfferFilter, clearOfferFilters, setSubjects, setUniversities } from "../offeraction";
 import { styles } from '../styles/default';
+import priceFormatter from 'infra/helpers/formatting';
 
 import agent from 'infra/server/superagent'
 
@@ -15,6 +16,14 @@ class OfferSearch extends Component {
     _kinds = ['Presencial', 'EAD'];
     _levels = ['Graduação', 'Pós-Graduação'];
     _shifts = ['Manhã', 'Tarde', 'Noite', 'Virtual'];
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedDiscount: 0,
+            selectedMaxPrice: this._maxOfferedPrice
+        }
+    }
 
     static navigationOptions = {
         title: 'Filtros de Bolsas'
@@ -35,6 +44,10 @@ class OfferSearch extends Component {
     };
     _clearFilters = () => {
         this.props.dispatch(clearOfferFilters());
+        this.setState({
+            selectedDiscount: 0,
+            selectedMaxPrice: this._maxOfferedPrice
+        })
     }
 
     _handleBackButton = () => {
@@ -90,7 +103,8 @@ class OfferSearch extends Component {
                     backdrop: styles.selectModalBackdrop,
                     scrollView: styles.selectModalScrollView,
                     button: styles.button,
-                    confirmText: styles.buttonText
+                    confirmText: styles.buttonText,
+                    selectToggle: { marginVertical: 5 }
                 }}
                 items={items}
                 uniqueKey='id'
@@ -137,59 +151,83 @@ class OfferSearch extends Component {
     render() {
         return (
             <View style={styles.offerSearch}>
+                <View style={styles.filters}>
+                    <ScrollView>
+                        <View style={styles.filtersContainer}>
+                            <View>
+                                <Text style={styles.textLarge}>Universidade</Text>
+                                {this._singleSelect(this.props.universities, 'Universidade', 'university_id')}
+                            </View>
 
-                <Text style={styles.textLarge}>Área</Text>
-                {this._singleSelect(this.props.subjects, 'Área', 'subject_id')}
+                            <View style={{ marginTop: 10 }}>
+                                <Text style={styles.textLarge}>Curso</Text>
+                                {this._singleSelect(this.props.subjects, 'Curso', 'subject_id')}
+                            </View>
 
-                <Text style={styles.textLarge}>Faculdade</Text>
-                {this._singleSelect(this.props.universities, 'Faculdade', 'university_id')}
+                            <View style={{ marginTop: 10 }}>
+                                <Text style={styles.textLarge}>Valor da mensalidade</Text>
+                                <Slider
+                                    style={{ alignSelf: 'stretch' }}
+                                    minimumValue={this._minOfferedPrice}
+                                    maximumValue={this._maxOfferedPrice}
+                                    step={this._priceStep}
+                                    value={this.state.selectedMaxPrice}
+                                    onValueChange={(value) => this.setState({ selectedMaxPrice: value })}
+                                    onSlidingComplete={(value) => this._updateFilters({ offered_price_max: value })}
+                                />
+                                <Text>Até {priceFormatter.format(this.state.selectedMaxPrice)}</Text>
+                            </View>
 
-                <Text style={styles.textLarge}>Valor da mensalidade</Text>
-                <Slider
-                    style={{ alignSelf: 'stretch' }}
-                    minimumValue={this._minOfferedPrice}
-                    maximumValue={this._maxOfferedPrice}
-                    step={this._priceStep}
-                    value={this.props.offerFilters.offered_price_max}
-                    onValueChange={(value) => this._updateFilters({ offered_price_max: value })}
-                />
-                {this.props.offerFilters.offered_price_max &&
-                    <Text>Até R$ {this.props.offerFilters.offered_price_max},00</Text>}
+                            <View style={{ marginTop: 10 }}>
+                                <Text style={styles.textLarge}>Desconto Mínimo</Text>
+                                <Slider
+                                    style={{ alignSelf: 'stretch' }}
+                                    minimumValue={0}
+                                    maximumValue={100}
+                                    step={1}
+                                    value={this.state.selectedDiscount}
+                                    onValueChange={(value) => this.setState({ selectedDiscount: value })}
+                                    onSlidingComplete={(value) => this._updateFilters({ discount_percentage_min: value })}
+                                />
+                                <Text>{this.state.selectedDiscount}%</Text>
+                            </View>
 
-                <Text style={styles.textLarge}>Desconto Mínimo</Text>
-                <Slider
-                    style={{ alignSelf: 'stretch' }}
-                    minimumValue={0}
-                    maximumValue={100}
-                    step={1}
-                    value={this.props.offerFilters.discount_percentage_min}
-                    onValueChange={(value) => this._updateFilters({ discount_percentage_min: value })}
-                />
-                {this.props.offerFilters.discount_percentage_min &&
-                    <Text>{this.props.offerFilters.discount_percentage_min}%</Text>}
+                            <View style={{ marginTop: 10 }}>
+                                <Text style={styles.textLarge}>Formação</Text>
+                                {this._multiSelect(this._levels, 'Formação', 'level')}
+                            </View>
 
-                <Text style={styles.textLarge}>Formação</Text>
-                {this._multiSelect(this._levels, 'Formação', 'level')}
+                            <View style={{ marginTop: 10 }}>
+                                <Text style={styles.textLarge}>Período</Text>
+                                {this._multiSelect(this._shifts, 'Período', 'shift')}
+                            </View>
 
-                <Text style={styles.textLarge}>Período</Text>
-                {this._multiSelect(this._shifts, 'Período', 'shift')}
-
-                <Text style={styles.textLarge}>Tipo de Curso</Text>
-                {this._multiSelect(this._kinds, 'Tipo de Curso', 'kind')}
-
-                <TouchableOpacity
-                    style={
-                        Object.keys(this.props.offerFilters).length == 0 ?
-                            styles.disabledButton :
-                            styles.button
-                    }
-                    onPress={this._clearFilters}
-                    disabled={Object.keys(this.props.offerFilters).length == 0}
-                >
-                    <Text style={styles.buttonText}>Limpar Filtros</Text>
-                </TouchableOpacity>
-
-                <Text>Filtros: {JSON.stringify(this.props.offerFilters)}</Text>
+                            <View style={{ marginTop: 10 }}>
+                                <Text style={styles.textLarge}>Tipo de Curso</Text>
+                                {this._multiSelect(this._kinds, 'Tipo de Curso', 'kind')}
+                            </View>
+                        </View>
+                    </ScrollView>
+                </View>
+                <View style={styles.buttonOverlay}>
+                    <TouchableOpacity
+                        style={
+                            [Object.keys(this.props.offerFilters).length == 0 ?
+                                styles.disabledButton :
+                                styles.button, { flex: 1, marginRight: 5 }]
+                        }
+                        onPress={this._clearFilters}
+                        disabled={Object.keys(this.props.offerFilters).length == 0}
+                    >
+                        <Text style={styles.buttonText}>Limpar Filtros</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={[styles.successButton, { flex: 1, marginLeft: 5 }]}
+                        onPress={this._handleBackButton}
+                    >
+                        <Text style={styles.buttonText}>Filtrar</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }

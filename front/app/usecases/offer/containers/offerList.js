@@ -39,7 +39,6 @@ class OfferList extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        {/* <Button onPress={this._goToFilter} title="Filtrar" /> */}
         <OfferListInfiniteView
           listData={this.props.listData}
           onItemPress={this._goToDetail}
