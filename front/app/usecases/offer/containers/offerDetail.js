@@ -64,7 +64,6 @@ class OfferDetail extends Component {
                         />
 
                     </ScrollView>
-
                     <DetailFooter
                         price={offerDetail.full_price}
                         offer={offerDetail.offered_price}
@@ -80,7 +79,7 @@ class OfferDetail extends Component {
 }
 
 const OfferBody = ({courseName, courseDescription}) => (
-    <View style={{padding: 20, paddingBottom: 160}}>
+    <View style={{padding: 20, paddingBottom: 160, alignSelf: 'flex-end'}}>
         <Text style={defaultStyles.boldText}> Sobre {courseName}</Text>
         <Text
             style={defaultStyles.text}> {courseDescription} </Text>

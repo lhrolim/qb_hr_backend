@@ -5,11 +5,11 @@ import Place from '../../../../../assets/img/place.png'
 import Filter from '../../../../../assets/img/filter.png'
 import colors from '../../../../contants/colors'
 
-export const HeaderInput = () => {
+export const HeaderInput = ({onPress}) => {
     return (
         <View style={{backgroundColor: colors.primaryAccent, paddingTop: 10}}>
-            <SingleHeaderInput image={School} text={'O que você quer estudar?'}/>
-            <SingleHeaderInput image={Place} text={'Onde você quer estudar?'}/>
+            <SingleHeaderInput image={School} text={'O que você quer estudar?'} onPress={() => onPress('course')}/>
+            <SingleHeaderInput image={Place} text={'Onde você quer estudar?'} onPress={() => onPress('university')}/>
             <View style={styles.filterContainer}>
                 <FilterButton />
             </View>
@@ -18,8 +18,8 @@ export const HeaderInput = () => {
 }
 
 
-const SingleHeaderInput = ({image, text}) => (
-    <TouchableOpacity style={styles.container}>
+const SingleHeaderInput = ({image, text, onPress}) => (
+    <TouchableOpacity style={styles.container} onPress={() => onPress()}>
         <Image style={styles.image} source={image}/>
         <Text style={styles.text}> {text} </Text>
     </TouchableOpacity>

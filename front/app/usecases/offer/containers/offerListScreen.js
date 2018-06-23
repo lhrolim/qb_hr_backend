@@ -38,11 +38,15 @@ class OfferListScreen extends Component {
     }
 
     openOfferDetail(id) {
-        this.props.navigation.navigate('offerdetail', {id: id})
+        this.props.navigation.navigate('offerdetail', {id})
     }
 
     refresh() {
         this.props.fetchOffersList(0, true)
+    }
+
+    search(type) {
+        this.props.navigation.navigate('offersearch', {type})
     }
 
     componentWillMount() {
@@ -62,7 +66,7 @@ class OfferListScreen extends Component {
                     flex: 1,
                 }}
             >
-                <HeaderInput />
+                <HeaderInput onPress={(type) => this.search(type)}/>
                 {err && <Text style={defaultStyles.errorPlaceholder}> Ocorreu um erro ao carregar a lista. Por favor, tente novamente.</Text>}
                 <OfferList
                     list={offersList}
