@@ -1,7 +1,6 @@
 import React , { PureComponent } from 'react'
 import { View, ActivityIndicator, StyleSheet } from 'react-native'
 
-
 export class Activity extends PureComponent {
   render () {
     return (

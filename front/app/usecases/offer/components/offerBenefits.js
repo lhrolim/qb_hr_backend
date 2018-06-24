@@ -1,7 +1,6 @@
 import React , { PureComponent } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 
-
 export class OfferBenefits extends PureComponent {
   render () {
     const { offeredPrice, fullPrice, discount } = this.props;

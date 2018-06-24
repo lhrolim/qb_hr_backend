@@ -1,7 +1,6 @@
 import agent from 'infra/server/superagent'
 import { formatFiltersToQueryParams } from '../../helpers/format'
 import { NavigationActions } from "react-navigation";
-import { fieldsInitialState } from './state'
 import {
   LIST_OFFERS,
   MOUNT_FILTER_FIELDS,
@@ -9,7 +8,6 @@ import {
   DETAIL_OFFER,
   FETCHING_DATA,
 } from './offerTypes'
-
 
 export const listOffers = filters => {
   return async dispatch => {
@@ -42,10 +40,6 @@ export const mountFilterFields = () => {
     const data = { courses, universities }
     dispatch({type: MOUNT_FILTER_FIELDS, data});
   }
-}
-
-export const resetFields = () => {
-  return dispatch => dispatch({type: APPLY_FIELDS, fields: fieldsInitialState})
 }
 
 export const applyFilters = filters => {

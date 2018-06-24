@@ -1,7 +1,6 @@
 export const fieldsInitialState = {
   courses: [],
   universities: [],
-  cost: '0',
   kinds: [
     {id: 'Presencial', name: 'Presencial'},
     {id: 'EAD', name: 'EAD'},
@@ -25,7 +24,6 @@ export const filtersInitialState = {
   kind: [],
   level: [],
   shift: [],
-  // course_id: '',
-  // discount_percentage_min: '',
-  // offered_price_max: '',
+  offered_price_max: '',
+  discount_percentage_min: '',
 }

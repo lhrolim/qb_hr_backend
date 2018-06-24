@@ -2,13 +2,12 @@ import React , { PureComponent } from 'react'
 import { Image, Text, View, TouchableOpacity, StyleSheet } from 'react-native'
 import { OfferBenefits } from './offerBenefits'
 
-
 export class OfferCard extends PureComponent {
   render () {
     const offer = this.props.offer;
     return (
       <TouchableOpacity
-        onPress={() => this.props.triggerDetail()}
+        onPress={this.props.triggerDetail}
         style={styles.cardContainer}
       >
         <View style={styles.cardPart}>

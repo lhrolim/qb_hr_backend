@@ -10,8 +10,8 @@ export class TuitionModal extends PureComponent {
           <Text>Perfeito!</Text>
           <Text>Dentro de alguns instantes entraremos em contato para confirmar sua bolsa ; )</Text>
         </View>
-        <TouchableOpacity style={styles.modalBtn} onPress={() => this.props.triggerModal()}>
-          <Button title="Fechar" onPress={() => this.props.triggerModal()}></Button>
+        <TouchableOpacity style={styles.modalBtn} onPress={this.props.triggerModal}>
+          <Button title="Fechar" onPress={this.props.triggerModal}></Button>
         </TouchableOpacity>
       </View>
     )

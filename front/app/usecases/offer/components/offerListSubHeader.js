@@ -1,7 +1,6 @@
 import React , { PureComponent } from 'react'
 import { Text, View, TouchableOpacity, StyleSheet, Button } from 'react-native'
 
-
 export class OfferListSubHeader extends PureComponent {
   render () {
     const { total, length } = this.props

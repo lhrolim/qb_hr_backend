@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { TouchableOpacity, View, Text, BackHandler } from 'react-native';
+import { View, BackHandler } from 'react-native';
 import { bindActionCreators } from 'redux';
-import { fetchingData, listScreen } from '../offeraction'
+import { listScreen } from '../offeraction'
 import { Activity } from './activity'
 import { OfferTuition } from './offerTuition'
 import { OfferDetailDescription } from './offerDetailDescription'
@@ -42,7 +42,7 @@ class OfferDetailView extends Component {
           />
           <Modal
             isVisible={this.state.isModalVisible}
-            onBackButtonPress={() => this._toggleModal()}
+            onBackButtonPress={this._toggleModal}
           >
             <TuitionModal triggerModal={this._toggleModal} />
           </Modal>
@@ -53,7 +53,7 @@ class OfferDetailView extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchingData, listScreen }, dispatch);
+  return bindActionCreators({ listScreen }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(OfferDetailView);

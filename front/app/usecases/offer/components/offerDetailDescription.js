@@ -1,6 +1,5 @@
 import React , { PureComponent } from 'react'
 import { Image, Text, View, ScrollView, StyleSheet, Dimensions } from 'react-native'
-import { OfferBenefits } from './offerBenefits'
 let { width, height } = Dimensions.get('window')
 
 export class OfferDetailDescription extends PureComponent {

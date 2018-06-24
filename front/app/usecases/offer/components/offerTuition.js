@@ -13,8 +13,8 @@ export class OfferTuition extends PureComponent {
           fullPrice={fullPrice}
           discount={discount}
         />
-        <TouchableOpacity onPress={() => this.props.triggerModal()} style={styles.tuitionBtn}>
-          <Button title="Quero a bolsa!" onPress={() => this.props.triggerModal()}></Button>
+        <TouchableOpacity onPress={this.props.triggerModal} style={styles.tuitionBtn}>
+          <Button title="Quero a bolsa!" onPress={this.props.triggerModal}></Button>
         </TouchableOpacity>
       </View>
     )

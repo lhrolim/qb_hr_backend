@@ -14,7 +14,6 @@ const InitialState = {
   offers: [],
   total: '',
   loading: false,
-  currentCourse: {},
   offer: {},
 };
 
