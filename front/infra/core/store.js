@@ -23,7 +23,8 @@ const combinedReducers = combineReducers({
     navigationReducer
 })
 
-const middlewares = [thunkMiddleware,logger,reactNavigationMiddleware ]
+const middlewares = [thunkMiddleware,reactNavigationMiddleware ]
+// const middlewares = [thunkMiddleware,logger,reactNavigationMiddleware ]
 
 
 // Centralized application state

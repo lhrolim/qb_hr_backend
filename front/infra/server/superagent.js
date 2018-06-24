@@ -15,7 +15,7 @@ const responseBody = res => {
 const failure = error => {
   //TODO: mark ajax end
   //TODO: handle notification error
-  console.error(error);
+  // console.error(error);
   return error;
 };
 
@@ -31,7 +31,7 @@ const Api = () => {
 };
 
 const requests = {
-  del:async url =>
+  del: async url =>
     await superagent.del(`${Api()}${url}`)
       .use(tokenPlugin)
       .then(responseBody)
@@ -49,7 +49,7 @@ const requests = {
       .then(responseBody)
       .catch(failure),
   post: async (url, body) =>
-  await superagent
+    await superagent
       .post(`${Api()}${url}`, body)
       .use(tokenPlugin)
       .then(responseBody)
@@ -57,13 +57,18 @@ const requests = {
 };
 
 const Offer = {
-  list: async () => await requests.get("offer"),
+  list: async (queryParams = '') => await requests.get(`offer?${queryParams}`),
   detail: async offerId => await requests.get(`offer/${offerId}`)
 };
 
-const Course = {};
+const Course = {
+  list: async () => await requests.get("course")
+};
 
-const University = {};
+const University = {
+  list: async () => await requests.get("university"),
+  detail: async universityId => await requests.get(`university/${universityId}`)
+};
 
 export default {
   Offer,
