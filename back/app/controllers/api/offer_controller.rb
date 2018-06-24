@@ -6,12 +6,14 @@ class Api::OfferController < ActionController::Base
   PAGE_SIZE = 10
 
   def index
-
-    offers = build_search_criteria(params).limit(PAGE_SIZE)
+    offset = params.delete "offset"
+    search = build_search_criteria(params)
+    total = search.length
+    offers = search.limit(PAGE_SIZE).offset(offset)
 
     respond_to do |format|
       format.json do
-        json_response(offers, ["university", "course"])
+        json_response({offers: offers, total: total}, ["university", "course"])
       end
     end
   end

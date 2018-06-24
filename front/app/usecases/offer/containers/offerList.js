@@ -1,67 +1,56 @@
+import { connect } from 'react-redux'
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity,Button } from 'react-native';
-import { NavigationActions } from "react-navigation";
-import { connnect } from 'react-redux'
-
-import  agent from 'infra/server/superagent'
+import { bindActionCreators } from 'redux';
+import { listOffers, fetchingData } from '../offeraction'
+import  OfferListView  from '../components/offerListView'
 
 class OfferList extends Component {
-
-
-
   static navigationOptions = {
-    title: 'List',
+    title: 'Lista de Ofertas',
     headerStyle: {
       backgroundColor: '#f4511e',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
-      fontWeight: 'bold',
-    },
+      fontWeight: 'bold'
+    }
   };
 
-
-  navigate = () => {
-    const detailNav = NavigationActions.navigate({
-      routeName: "offerdetail",
-      params: { name: "My Detail..." }
-    });
-    this.props.navigation.dispatch(detailNav);
-  };
-
-  async componentWillMount() {
-    //TODO: bring initial list
-    try {
-      const list = await agent.Offer.list();
-      console.log(list);
-    } catch (err) {
-      console.log(err);
+  _loadMoreOffers = () => {
+    const { offers, filters } = this.props
+    if(offers.length != filters.offset) {
+      filters.offset = offers.length.toString()
+      this.props.listOffers(filters)
     }
   }
 
+  componentDidMount() {
+    this.props.fetchingData()
+    this.props.listOffers(this.props.filters);
+  }
+
   render() {
+    const { loading, offers, total } = this.props
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "yellowgreen",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <Text>List</Text>
-        <TouchableOpacity
-          style={{
-            paddingVertical: 15,
-            paddingHorizontal: 40,
-          }}
-          onPress={this.navigate}
-        >
-        <Button title="Load Detail" onPress={this.navigate}>Load Detail</Button>
-        </TouchableOpacity>
-      </View>
+      <OfferListView
+        offers={offers}
+        total={total}
+        loading={loading}
+        loadMoreOffers={() => this._loadMoreOffers()}
+      />
     );
   }
 }
 
-export default OfferList;
+const mapStateToProps = state => ({
+  loading: state.offerReducer.loading,
+  offers: state.offerReducer.offers,
+  total: state.offerReducer.total,
+  filters: state.offerReducer.filters,
+})
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ listOffers, fetchingData }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OfferList);
