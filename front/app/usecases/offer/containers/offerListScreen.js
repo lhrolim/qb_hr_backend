@@ -58,6 +58,8 @@ class OfferListScreen extends Component {
             offersList,
             err,
             loading,
+            courseSearch,
+            universitySearch,
         } = this.props
 
         return (
@@ -66,7 +68,7 @@ class OfferListScreen extends Component {
                     flex: 1,
                 }}
             >
-                <HeaderInput onPress={(type) => this.search(type)}/>
+                <HeaderInput onPress={(type) => this.search(type)} courseSearch={courseSearch} universitySearch={universitySearch}/>
                 {err && <Text style={defaultStyles.errorPlaceholder}> Ocorreu um erro ao carregar a lista. Por favor, tente novamente.</Text>}
                 <OfferList
                     list={offersList}
@@ -85,13 +87,15 @@ function mapStateToProps(state) {
         offersList: state.offerReducer.offersList,
         err: state.offerReducer.err,
         loading: state.offerReducer.loading,
-        currentPage: state.offerReducer.currentPage
+        currentPage: state.offerReducer.filter.page,
+        courseSearch: state.offerReducer.filter && state.offerReducer.filter.course && state.offerReducer.filter.course.name,
+        universitySearch: state.offerReducer.filter && state.offerReducer.filter.university && state.offerReducer.filter.university.name,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetchOffersList: (page, clear) => dispatch(fetchOffersList(page, clear))
+        fetchOffersList: (page, clear) => dispatch(fetchOffersList({page: page}, clear))
     }
 }
 

@@ -4,12 +4,21 @@ import School from '../../../../../assets/img/school.png'
 import Place from '../../../../../assets/img/place.png'
 import Filter from '../../../../../assets/img/filter.png'
 import colors from '../../../../contants/colors'
+import filters from '../../../../contants/filters'
 
-export const HeaderInput = ({onPress}) => {
+export const HeaderInput = ({onPress, universitySearch, courseSearch}) => {
     return (
         <View style={{backgroundColor: colors.primaryAccent, paddingTop: 10}}>
-            <SingleHeaderInput image={School} text={'O que você quer estudar?'} onPress={() => onPress('course')}/>
-            <SingleHeaderInput image={Place} text={'Onde você quer estudar?'} onPress={() => onPress('university')}/>
+            <SingleHeaderInput
+                image={School}
+                text={courseSearch ? courseSearch : filters.COURSE}
+                onPress={() => onPress(filters.COURSE)}
+            />
+            <SingleHeaderInput
+                image={Place}
+                text={universitySearch ? universitySearch : filters.UNIVERSITY}
+                onPress={() => onPress(filters.UNIVERSITY)}
+            />
             <View style={styles.filterContainer}>
                 <FilterButton />
             </View>

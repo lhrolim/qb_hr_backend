@@ -1,6 +1,7 @@
 import superagentPromise from "superagent-promise";
 import _superagent from "superagent";
 import store from "../core/store";
+import { buildFilter } from "../../app/helpers/offers";
 
 const props = require("./server.json");
 
@@ -9,6 +10,7 @@ const superagent = superagentPromise(_superagent, global.Promise);
 // const encode = encodeURIComponent;
 const responseBody = res => {
     //TODO: mark ajax end
+    console.log(res)
     return {
         data: res.body,
         err: null
@@ -59,13 +61,20 @@ const requests = {
 };
 
 const Offer = {
-    list: async page => await requests.get(`offer?page=${page}`),
-    detail: async offerId => await requests.get(`offer/${offerId}`)
+    list: async () => {
+        const filter = buildFilter(store.getState().offerReducer.filter)
+        return await requests.get(`offer${filter}`)
+    },
+    detail: async offerId => await requests.get(`offer/${offerId}`),
 };
 
-const Course = {};
+const Course = {
+    searchByName: async name => await requests.get(`course?name=${name}`)
+};
 
-const University = {};
+const University = {
+    searchByName: async name => await requests.get(`university?name=${name}`)
+};
 
 export default {
     Offer,

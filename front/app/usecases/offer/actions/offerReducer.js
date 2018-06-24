@@ -4,11 +4,19 @@ const InitialState = {
     offersList: [],
     offerDetail: null,
     offersListLoading: false,
-    currentPage: 1,
     err: null,
     errDetail: null,
     loading: false,
     loadingDetail: false,
+    loadingSearch: false,
+    courseSearch: '',
+    universitySearch: '',
+    errSearch: false,
+    courses: [],
+    universities: [],
+    filter: {
+        page: 1,
+    },
 };
 
 export default offerState = (state = InitialState, action) => {
@@ -17,8 +25,11 @@ export default offerState = (state = InitialState, action) => {
             return {
                 ...state,
                 loading: true,
-                currentPage: action.payload,
-                err: null
+                err: null,
+                filter: {
+                    ... state.filter,
+                    ... action.payload,
+                }
             }
         case type.FECTH_OFFERS_LIST_SUCCESS:
             return {
@@ -32,7 +43,15 @@ export default offerState = (state = InitialState, action) => {
                 ...state,
                 loading: false,
                 offersList: action.payload,
-                err: null
+                err: null,
+                filter: { page: 1 }
+            }
+        case type.FILTER_AND_FETCH_LIST_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                offersList: action.payload,
+                err: null,
             }
         case type.FECTH_OFFERS_LIST_ERROR:
             return {
@@ -59,6 +78,34 @@ export default offerState = (state = InitialState, action) => {
                 ...state,
                 loadingDetail: false,
                 errDetail: action.payload,
+            }
+        case type.SEARCH_START:
+            return {
+                ...state,
+                loadingSearch: true,
+                errSearch: null
+            }
+        case type.SEARCH_ERROR:
+            return {
+                ...state,
+                loadingSearch: false,
+                errSearch: action.payload
+            }
+        case type.COURSES_SEARCH_SUCCESS:
+            return {
+                ...state,
+                loadingSearch: false,
+                courses: action.payload.list,
+                courseSearch: action.payload.text,
+                errSearch: null,
+            }
+        case type.UNIVERTISY_SEARCH_SUCCESS:
+            return {
+                ...state,
+                loadingSearch: false,
+                universities: action.payload.list,
+                universitySearch: action.payload.text,
+                errSearch: null,
             }
         default:
             return state;
