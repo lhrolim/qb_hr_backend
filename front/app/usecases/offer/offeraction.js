@@ -32,9 +32,13 @@ export const detailOffer = id => {
 
 export const mountFilterFields = () => {
   return async dispatch => {
-    const courses = await agent.Course.list();
+    const courses = []
+    const coursesSet = new Set()
+    const fullCourses = await agent.Course.list();
     const fullUniversities = await agent.University.list();
     const universities = fullUniversities.map(item => ({id: `${item.id}`, name: item.name}))
+    fullCourses.map(item => coursesSet.add(item.name))
+    coursesSet.forEach(item => courses.push({id: item, name: item}))
     const data = { courses, universities }
     dispatch({type: MOUNT_FILTER_FIELDS, data});
   }

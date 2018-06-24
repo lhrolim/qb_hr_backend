@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { View, Text, Button, TouchableOpacity } from 'react-native';
 import { bindActionCreators } from 'redux';
-import { applyFilters, fetchingData, listScreen, listOffers, resetFilters } from '../offeraction'
+import { applyFilters, fetchingData, listScreen, listOffers } from '../offeraction'
 import { Activity } from './activity'
 import { MultiSelectInput } from '../../../shared/multiSelect'
 
@@ -11,12 +11,12 @@ class OfferSearchView extends Component {
     kind: [],
     level: [],
     shift: [],
-    course: [],
+    course_name: [],
     university_id: [],
     discount_percentage_min: '',
     offered_price_max: '',
     fields: [
-      // {items: 'courses', selected: 'course', single: false, selectText: 'Selecione o curso', search: 'Qual o curso?'},
+      {items: 'courses', selected: 'course_name', single: false, selectText: 'Selecione o curso', search: 'Qual o curso?'},
       {items: 'universities', selected: 'university_id', single: true, selectText: 'Selecione a universidade', search: 'Qual a universidade?'},
       {items: 'kinds', selected: 'kind', single: false, selectText: 'Selecione o modelo', search: 'Qual o modelo de curso?'},
       {items: 'levels', selected: 'level', single: false, selectText: 'Selecione o nível', search: 'Qual o nível do curso?'},
@@ -26,7 +26,6 @@ class OfferSearchView extends Component {
 
   handleSelect = (selectedItems, type) => {
     this.setState({ [type]: selectedItems })
-    // this.props.applyFilters({filters: this.props.filters})
   }
 
   _resetFields = () => {
@@ -35,9 +34,9 @@ class OfferSearchView extends Component {
       level: [],
       shift: [],
       university_id: [],
-      // course: [],
-      // discount_percentage_min: '',
-      // offered_price_max: '',
+      course_name: [],
+      discount_percentage_min: '',
+      offered_price_max: '',
     })
   }
 
@@ -96,7 +95,7 @@ class OfferSearchView extends Component {
           }
           <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
             <TouchableOpacity onPress={this._resetFields} style={{flex: 0.4}}>
-              <Button title="Limpar" onPress={this._resetFields} style={{backgroundColor: 'red'}}></Button>
+              <Button color="#db502b" title="Limpar" onPress={this._resetFields}></Button>
             </TouchableOpacity>
             <TouchableOpacity onPress={this._filterOffers} style={{flex: 0.4}}>
               <Button title="Filtrar" onPress={this._filterOffers}></Button>
@@ -109,7 +108,7 @@ class OfferSearchView extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ applyFilters, fetchingData, listScreen, listOffers, resetFilters }, dispatch);
+  return bindActionCreators({ applyFilters, fetchingData, listScreen, listOffers }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(OfferSearchView);
