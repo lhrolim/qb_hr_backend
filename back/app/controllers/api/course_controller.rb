@@ -2,13 +2,13 @@ class Api::CourseController < ActionController::Base
   include Response
   include ExceptionHandler
 
-  PAGE_SIZE = 10
+  # PAGE_SIZE = 10
 
   def index
     course = Course.unscoped
     course = course.where("name like ?", "%#{params["name"]}%") unless params["name"] == nil?
 
-    courses = course.take(PAGE_SIZE)
+    courses = course
 
     respond_to do |format|
       format.json do
