@@ -33,7 +33,8 @@ export const detailOffer = id => {
 export const mountFilterFields = () => {
   return async dispatch => {
     const courses = await agent.Course.list();
-    const universities = await agent.University.list();
+    const fullUniversities = await agent.University.list();
+    const universities = fullUniversities.map(item => ({id: `${item.id}`, name: item.name}))
     const data = { courses, universities }
     dispatch({type: MOUNT_FILTER_FIELDS, data});
   }
@@ -44,6 +45,7 @@ export const resetFields = () => {
 }
 
 export const applyFilters = filters => {
+  filters.offset = 0
   return dispatch => dispatch({type: APPLY_FILTERS, filters})
 }
 

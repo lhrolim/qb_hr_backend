@@ -17,7 +17,7 @@ export class OfferDetailDescription extends PureComponent {
           <View style={styles.characteristics}>
             <Text style={styles.characteristicText}>{offer.course.shift}</Text>
             <Text style={styles.characteristicText}>{offer.course.kind}</Text>
-            <Text style={styles.characteristicText}>{offer.course.max_periods} semestres</Text>
+            <Text style={styles.characteristicText}>{offer.course.max_periods} períodos</Text>
           </View>
           <View>
             <Text style={styles.subTitle}>Sobre {offer.course.name}:</Text>

@@ -21,7 +21,7 @@ export class OfferCard extends PureComponent {
         <View style={styles.cardPart}>
           <Text style={styles.cardMiddlePart}>{offer.course.shift}</Text>
           <Text style={styles.cardMiddlePart}>{offer.course.kind}</Text>
-          <Text style={styles.cardMiddlePart}>{offer.course.max_periods} semestres</Text>
+          <Text style={styles.cardMiddlePart}>{offer.course.max_periods} períodos</Text>
         </View>
         <OfferBenefits
           offeredPrice={offer.offered_price}

@@ -9,10 +9,11 @@ export class MultiSelectInput extends PureComponent {
     return (
       <View style={{ flex: 1 }}>
         <MultiSelect
-          hideTags
+          hideTags={true}
+          hideSubmitButton={true}
           items={items}
           uniqueKey="id"
-          single={false}
+          single={single}
           ref={component => { this.multiSelect = component }}
           onSelectedItemsChange={selectedItems => this.props.onSelectedItemsChange(selectedItems)}
           selectedItems={selectedItems}
@@ -26,9 +27,11 @@ export class MultiSelectInput extends PureComponent {
           submitButtonColor="#CCC"
           submitButtonText="Submit"
         />
-        <View>
-          {this.multiSelect && this.multiSelect.getSelectedItemsExt(selectedItems)}
-        </View>
+        {/*
+          <View>
+          {!single && this.multiSelect && this.multiSelect.getSelectedItemsExt(selectedItems)}
+          </View>
+        */}
       </View>
     );
   }

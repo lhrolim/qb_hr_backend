@@ -21,9 +21,9 @@ export const fieldsInitialState = {
 export const filtersInitialState = {
   offset: '0',
   university_id: '',
-  course_id: '',
-  discount_percentage_min: '',
-  offered_price_max: '',
+  // course_id: '',
+  // discount_percentage_min: '',
+  // offered_price_max: '',
   kind: [],
   level: [],
   shift: [],
