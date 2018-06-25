@@ -1,0 +1,1 @@
+export let objectToArray = (obj) => Object.keys(obj).map((k) => obj[k])
