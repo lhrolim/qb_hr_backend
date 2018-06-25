@@ -16,6 +16,40 @@ const InitialState = {
     universities: [],
     filter: {
         page: 1,
+        kind: [
+            {
+                title: 'Presencial',
+                checked: false
+            },
+            {
+                title: 'EAD',
+                checked: false
+            }
+        ],
+        shift: [
+            {
+                title: 'Manhã',
+                checked: false
+            },
+            {
+                title: 'Tarde',
+                checked: false
+            },
+            {
+                title: 'Noite',
+                checked: false
+            }
+        ],
+        level: [
+            {
+                title: 'Graduação',
+                checked: false
+            },
+            {
+                title: 'Pós-Graduação',
+                checked: false
+            }
+        ]
     },
 };
 
@@ -44,7 +78,7 @@ export default offerState = (state = InitialState, action) => {
                 loading: false,
                 offersList: action.payload,
                 err: null,
-                filter: { page: 1 }
+                filter: InitialState.filter
             }
         case type.FILTER_AND_FETCH_LIST_SUCCESS:
             return {

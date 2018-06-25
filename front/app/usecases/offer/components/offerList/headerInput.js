@@ -6,7 +6,7 @@ import Filter from '../../../../../assets/img/filter.png'
 import colors from '../../../../contants/colors'
 import filters from '../../../../contants/filters'
 
-export const HeaderInput = ({onPress, universitySearch, courseSearch}) => {
+export const HeaderInput = ({onPress, universitySearch, courseSearch, openFilter}) => {
     return (
         <View style={{backgroundColor: colors.primaryAccent, paddingTop: 10}}>
             <SingleHeaderInput
@@ -20,7 +20,7 @@ export const HeaderInput = ({onPress, universitySearch, courseSearch}) => {
                 onPress={() => onPress(filters.UNIVERSITY)}
             />
             <View style={styles.filterContainer}>
-                <FilterButton />
+                <FilterButton openFilter={() => openFilter()}/>
             </View>
         </View>
     );
@@ -34,8 +34,8 @@ const SingleHeaderInput = ({image, text, onPress}) => (
     </TouchableOpacity>
 )
 
-const FilterButton = () => (
-    <TouchableOpacity style={styles.filterButton}>
+const FilterButton = ({openFilter}) => (
+    <TouchableOpacity style={styles.filterButton} onPress={() => openFilter()}>
         <Image style={styles.image} source={Filter}/>
         <Text> Filtros </Text>
     </TouchableOpacity>

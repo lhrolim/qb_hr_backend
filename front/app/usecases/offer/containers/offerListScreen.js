@@ -9,6 +9,7 @@ import { HeaderInput } from "../components/offerList/headerInput";
 import colors from '../../../contants/colors'
 import Loading from "../../../components/loading";
 
+
 class OfferListScreen extends Component {
 
 
@@ -68,7 +69,12 @@ class OfferListScreen extends Component {
                     flex: 1,
                 }}
             >
-                <HeaderInput onPress={(type) => this.search(type)} courseSearch={courseSearch} universitySearch={universitySearch}/>
+                <HeaderInput
+                    onPress={(type) => this.search(type)}
+                    courseSearch={courseSearch}
+                    universitySearch={universitySearch}
+                    openFilter={() => this.props.navigation.navigate('offerfilter')}
+                />
                 {err && <Text style={defaultStyles.errorPlaceholder}> Ocorreu um erro ao carregar a lista. Por favor, tente novamente.</Text>}
                 <OfferList
                     list={offersList}
