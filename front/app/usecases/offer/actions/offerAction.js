@@ -1,8 +1,6 @@
 import agent from 'infra/server/superagent'
 import * as type from './offerActionTypes'
-import { NavigationActions } from 'react-navigation';
-import filters from '../../../contants/filters'
-//include additional actions here
+import {NavigationActions} from 'react-navigation';
 
 const fetchOffersListStart = (filter) => ({
     type: type.FECTH_OFFERS_LIST_START,
@@ -13,6 +11,11 @@ const fetchOffersListStart = (filter) => ({
 const fetchOffersListSuccess = (offersList) => ({
     type: type.FECTH_OFFERS_LIST_SUCCESS,
     payload: offersList,
+})
+
+const clearAndFetchOffersListStart = (filter) => ({
+    type: type.CLEAR_AND_FETCH_OFFERS_LIST_START,
+    payload: filter,
 })
 
 const clearAndFetchOffersListSuccess = (offersList) => ({
@@ -30,9 +33,15 @@ const fetchOffersListError = (err) => ({
     payload: err,
 })
 
-export const fetchOffersList = (filter, clear, search) => async (dispatch) =>{
+export const fetchOffersList = (filter, clear, search) => async (dispatch) => {
     try {
-        dispatch(fetchOffersListStart(filter))
+        if (clear) {
+            dispatch(clearAndFetchOffersListStart(filter))
+        } else {
+            dispatch(fetchOffersListStart(filter))
+        }
+
+
         const res = await agent.Offer.list();
         if (res.err) {
             dispatch(fetchOffersListError(res.err))
@@ -69,7 +78,7 @@ const offerDetailError = (err) => ({
     payload: err,
 })
 
-export const getOfferDetail = (id) => async (dispatch) =>{
+export const getOfferDetail = (id) => async (dispatch) => {
     try {
         dispatch(offerDetailStart())
         const res = await agent.Offer.detail(id);
@@ -105,8 +114,7 @@ const universitySearchSuccess = (list, text) => ({
 })
 
 
-
-export const searchCourses = (type, searchText) => async (dispatch) =>{
+export const searchCourses = (type, searchText) => async (dispatch) => {
     try {
         dispatch(searchStart())
 
@@ -123,7 +131,7 @@ export const searchCourses = (type, searchText) => async (dispatch) =>{
     }
 }
 
-export const searchUniversity = (type, searchText) => async (dispatch) =>{
+export const searchUniversity = (type, searchText) => async (dispatch) => {
     try {
         dispatch(searchStart())
 

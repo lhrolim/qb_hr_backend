@@ -18,7 +18,5 @@ export default defaultStyles ={
     errorPlaceholder: {
         fontSize: 18,
         color: 'gray',
-        padding: 40,
-        alignSelf: 'center',
     }
 }

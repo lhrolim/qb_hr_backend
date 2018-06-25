@@ -11,6 +11,7 @@ import colors from '../../../contants/colors'
 import {fetchOffersList} from "../actions/offerAction";
 import School from '../../../../assets/img/school.png'
 import Place from '../../../../assets/img/place.png'
+import { objectToArray } from '../../../helpers/index'
 
 class OfferFilter extends Component {
 
@@ -97,19 +98,19 @@ class OfferFilter extends Component {
                 </HidableListHeader>
                 <HidableListHeader title={'Distância'}>
                     <CheckList
-                        list={kind ? kind : []}
+                        list={kind ? objectToArray(kind) : []}
                         onValueChange={() => this.setState({kind})}
                     />
                 </HidableListHeader>
                 <HidableListHeader title={'Período'}>
                     <CheckList
-                        list={shift ? shift : []}
+                        list={shift ? objectToArray(shift) : []}
                         onValueChange={() => this.setState({shift})}
                     />
                 </HidableListHeader>
                 <HidableListHeader title={'Tipo'}>
                     <CheckList
-                        list={level ? level : []}
+                        list={level ? objectToArray(level) : []}
                         onValueChange={() => this.setState({level})}
                     />
                 </HidableListHeader>

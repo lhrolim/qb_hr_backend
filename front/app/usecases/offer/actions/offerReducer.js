@@ -1,4 +1,5 @@
 import * as type from './offerActionTypes'
+import {clearFilters} from "../../../contants/filters";
 
 const InitialState = {
     offersList: [],
@@ -16,40 +17,43 @@ const InitialState = {
     universities: [],
     filter: {
         page: 1,
-        kind: [
-            {
+        kind: {
+            presencial: {
                 title: 'Presencial',
                 checked: false
             },
-            {
+            ead: {
                 title: 'EAD',
                 checked: false
             }
-        ],
-        shift: [
-            {
+        },
+        shift: {
+            manha: {
                 title: 'Manhã',
                 checked: false
             },
-            {
+            tarde: {
                 title: 'Tarde',
                 checked: false
             },
-            {
+            noite: {
                 title: 'Noite',
                 checked: false
             }
-        ],
-        level: [
-            {
+        },
+        level: {
+            graduacao: {
                 title: 'Graduação',
-                checked: false
-            },
-            {
-                title: 'Pós-Graduação',
-                checked: false
+                checked:
+                    false
             }
-        ]
+            ,
+            pos: {
+                title: 'Pós-Graduação',
+                checked:
+                    false
+            }
+        }
     },
 };
 
@@ -61,16 +65,23 @@ export default offerState = (state = InitialState, action) => {
                 loading: true,
                 err: null,
                 filter: {
-                    ... state.filter,
-                    ... action.payload,
+                    ...state.filter,
+                    ...action.payload,
                 }
             }
         case type.FECTH_OFFERS_LIST_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                offersList: [... state.offersList, ... action.payload],
+                offersList: [...state.offersList, ...action.payload],
                 err: null
+            }
+        case type.CLEAR_AND_FETCH_OFFERS_LIST_START:
+            return {
+                ...state,
+                loading: false,
+                err: null,
+                filter: clearFilters(InitialState.filter)
             }
         case type.CLEAR_AND_FETCH_OFFERS_LIST_SUCCESS:
             return {
@@ -78,7 +89,6 @@ export default offerState = (state = InitialState, action) => {
                 loading: false,
                 offersList: action.payload,
                 err: null,
-                filter: InitialState.filter
             }
         case type.FILTER_AND_FETCH_LIST_SUCCESS:
             return {

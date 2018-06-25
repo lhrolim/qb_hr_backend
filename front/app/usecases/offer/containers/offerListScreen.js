@@ -75,7 +75,17 @@ class OfferListScreen extends Component {
                     universitySearch={universitySearch}
                     openFilter={() => this.props.navigation.navigate('offerfilter')}
                 />
-                {err && <Text style={defaultStyles.errorPlaceholder}> Ocorreu um erro ao carregar a lista. Por favor, tente novamente.</Text>}
+                {err &&
+                <View style={defaultStyles.centralizedContainer}>
+                    <Text style={defaultStyles.errorPlaceholder}> Ocorreu um erro ao carregar a lista. Por favor, tente
+                        novamente.</Text>
+                </View>
+                }
+                {offersList.length === 0 &&
+                <View style={defaultStyles.centralizedContainer}>
+                    <Text style={defaultStyles.errorPlaceholder}> Não encontramos nenhuma oferta, por favor tente novamente com outros filtros.</Text>
+                </View>
+                }
                 <OfferList
                     list={offersList}
                     fetchMoreOffers={() => this.fetchMoreOffers()}
