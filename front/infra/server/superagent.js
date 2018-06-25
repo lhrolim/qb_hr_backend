@@ -1,8 +1,9 @@
-import superagentPromise from "superagent-promise";
-import _superagent from "superagent";
-import store from "../core/store";
+import superagentPromise from 'superagent-promise';
+import _superagent from 'superagent';
+import qs from 'qs';
+import store from '../core/store';
 
-const props = require("./server.json");
+const props = require('./server.json');
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
@@ -27,18 +28,20 @@ const tokenPlugin = req => {
 
 const Api = () => {
   var env = process.env.NODE_ENV;
-  return env === "development" ? props.dev : props.prod;
+  return env === 'development' ? props.dev : props.prod;
 };
 
 const requests = {
-  del:async url =>
-    await superagent.del(`${Api()}${url}`)
+  del: async url =>
+    await superagent
+      .del(`${Api()}${url}`)
       .use(tokenPlugin)
       .then(responseBody)
       .catch(failure),
-  get: async url =>
+  get: async (url, params) =>
     await superagent
       .get(`${Api()}${url}`)
+      .query(qs.stringify(params, {arrayFormat: 'brackets'}))
       .use(tokenPlugin)
       .then(responseBody)
       .catch(failure),
@@ -49,7 +52,7 @@ const requests = {
       .then(responseBody)
       .catch(failure),
   post: async (url, body) =>
-  await superagent
+    await superagent
       .post(`${Api()}${url}`, body)
       .use(tokenPlugin)
       .then(responseBody)
@@ -57,16 +60,20 @@ const requests = {
 };
 
 const Offer = {
-  list: async () => await requests.get("offer"),
+  list: async (params) => await requests.get('offer', params),
   detail: async offerId => await requests.get(`offer/${offerId}`)
 };
 
-const Course = {};
+const Subject = {
+  list: async () => await requests.get('subject')
+};
 
-const University = {};
+const University = {
+  list: async () => await requests.get('university')
+};
 
 export default {
   Offer,
-  Course,
+  Subject,
   University
 };

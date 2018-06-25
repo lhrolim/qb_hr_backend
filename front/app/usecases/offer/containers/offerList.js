@@ -1,67 +1,57 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity,Button } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { NavigationActions } from "react-navigation";
-import { connnect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import  agent from 'infra/server/superagent'
+import OfferListInfiniteView from '../components/offerListInfiniteView';
 
 class OfferList extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      filteredTotal: 0,
+      total: 0
+    };
 
+    this.render = this.render.bind(this);
+  }
 
   static navigationOptions = {
-    title: 'List',
-    headerStyle: {
-      backgroundColor: '#f4511e',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
+    title: 'Quero Bolsa'
   };
 
-
-  navigate = () => {
+  _goToDetail = (offer) => {
     const detailNav = NavigationActions.navigate({
       routeName: "offerdetail",
-      params: { name: "My Detail..." }
+      params: { offerId: offer.id }
     });
     this.props.navigation.dispatch(detailNav);
   };
 
-  async componentWillMount() {
-    //TODO: bring initial list
-    try {
-      const list = await agent.Offer.list();
-      console.log(list);
-    } catch (err) {
-      console.log(err);
-    }
+  _goToFilter = () => {
+    const filterNav = NavigationActions.navigate({
+      routeName: "offersearch"
+    });
+    this.props.navigation.dispatch(filterNav);
   }
 
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "yellowgreen",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <Text>List</Text>
-        <TouchableOpacity
-          style={{
-            paddingVertical: 15,
-            paddingHorizontal: 40,
-          }}
-          onPress={this.navigate}
-        >
-        <Button title="Load Detail" onPress={this.navigate}>Load Detail</Button>
-        </TouchableOpacity>
+      <View style={{ flex: 1 }}>
+        <OfferListInfiniteView
+          listData={this.props.listData}
+          onItemPress={this._goToDetail}
+          onHeaderPress={this._goToFilter}
+          filteredTotal={this.state.filteredTotal}
+          total={this.state.total} />
       </View>
     );
   }
 }
 
-export default OfferList;
+const mapStateToProps = (state) => {
+  return { listData: state.offerReducer.listData };
+};
+
+export default connect(mapStateToProps)(OfferList);

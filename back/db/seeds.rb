@@ -33,11 +33,27 @@ un_arr = [
   },
 ]
 
+subject_arr = [
+  {
+    id: 1,
+    name: "Agronomia"
+  },
+  {
+    id: 2,
+    name: "Engenharia de Telecomunicações"
+  },
+  {
+    id: 3,
+    name: "Engenharia de Computação"
+  }
+]
+
 course_arr = [
 
   {
     id: 1,
     name: "Agronomia",
+    subject_id: 1,
     kind: "Presencial",
     shift: "Manhã",
     level: "Graduação",
@@ -51,6 +67,7 @@ course_arr = [
   {
     id: 2,
     name: "Agronomia",
+    subject_id: 1,
     kind: "Presencial",
     shift: "Noite",
     level: "Graduação",
@@ -64,6 +81,7 @@ course_arr = [
   {
     id: 3,
     name: "Engenharia de Telecomunicações",
+    subject_id: 2,
     kind: "Presencial",
     shift: "Noite",
     level: "Graduação",
@@ -76,6 +94,7 @@ course_arr = [
   {
     id: 4,
     name: "Engenharia de Telecomunicações",
+    subject_id: 2,
     kind: "Presencial",
     shift: "Tarde",
     level: "Graduação",
@@ -88,6 +107,7 @@ course_arr = [
   {
     id: 5,
     name: "Engenharia de Telecomunicações",
+    subject_id: 2,
     kind: "EAD",
     shift: "Virtual",
     level: "Graduação",
@@ -100,6 +120,7 @@ course_arr = [
   {
     id: 6,
     name: "Engenharia de Telecomunicações",
+    subject_id: 2,
     kind: "EAD",
     shift: "Virtual",
     level: "Graduação",
@@ -112,6 +133,7 @@ course_arr = [
   {
     id: 7,
     name: "Engenharia de Computação",
+    subject_id: 3,
     kind: "Presencial",
     shift: "Manhã",
     level: "Graduação",
@@ -123,6 +145,7 @@ course_arr = [
   {
     id: 8,
     name: "Engenharia de Computação",
+    subject_id: 3,
     kind: "Presencial",
     shift: "Noite",
     level: "Graduação",
@@ -134,6 +157,7 @@ course_arr = [
   {
     id: 9,
     name: "Engenharia de Computação",
+    subject_id: 3,
     kind: "Presencial",
     shift: "Noite",
     level: "Graduação",
@@ -146,6 +170,7 @@ course_arr = [
 
 ActiveRecord::Base.transaction do
   un_arr = University.create(un_arr)
+  subject_arr = Subject.create(subject_arr)
   course_arr = Course.create(course_arr)
 
   un_arr.each do |un|
