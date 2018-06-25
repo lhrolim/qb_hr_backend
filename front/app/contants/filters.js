@@ -3,7 +3,7 @@ export default filters = {
     UNIVERSITY: 'Escolha uma faculdade!'
 }
 
-// TODO: find a better way to do this
+// TODO: find a better way to clear the initialState object
 export const clearFilters = (filters) => {
     if (!filters.kind) return {page: 0};
     filters.kind.presencial.checked = false

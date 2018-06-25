@@ -29,7 +29,7 @@ const TopImage = ({logo}) => (
         <Image style={styles.backgroundImage}
                source={{uri: 'http://www.slate.com/content/dam/slate/articles/health_and_science/science/2012/07/120712_SCI_NIGHTSKY.jpg.CROP.rectangle3-large.jpg'}}>
         </Image>
-        <Image source={{uri: logo}} style={styles.detailImage}/>
+        <Image source={{uri: logo}} style={styles.detailImage} resizeMode='cover'/>
     </View>
 )
 

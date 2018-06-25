@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ScrollView, StyleSheet} from 'react-native';
+import {View, ScrollView, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {connect} from "react-redux";
 import HidableListHeader from '../../../components/hidableListHeader'
 import InputTextOption from '../components/offerFilter/inputTextOption'
@@ -15,11 +15,29 @@ import { objectToArray } from '../../../helpers/index'
 
 class OfferFilter extends Component {
 
-    static navigationOptions = {
-        headerStyle: {
-            backgroundColor: 'white',
+    static navigationOptions = ({navigation}) => {
+        const {state} = navigation
+        return {
+            headerStyle: {
+                backgroundColor: 'white',
+            },
+            headerRight: (
+                <TouchableOpacity onPress={() => state.params.clear()}>
+                    <Text style={{marginRight: 15}}> Limpar </Text>
+                </TouchableOpacity>
+            )
         }
+
     };
+
+    clear(props) {
+        props.fetchOffersList({page: 1}, true)
+        props.navigation.goBack()
+    }
+
+    componentDidMount(){
+        this.props.navigation.setParams({clear: () => this.clear(this.props)})
+    }
 
     constructor(props) {
         super(props);
