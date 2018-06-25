@@ -9,7 +9,8 @@ import Button from '../../../components/button'
 import filters from "../../../contants/filters"
 import colors from '../../../contants/colors'
 import {fetchOffersList} from "../actions/offerAction";
-
+import School from '../../../../assets/img/school.png'
+import Place from '../../../../assets/img/place.png'
 
 class OfferFilter extends Component {
 
@@ -23,8 +24,8 @@ class OfferFilter extends Component {
         super(props);
 
         this.state = {
-            offeredPriceMax: props.offeredPriceMax || 2000,
-            discountPercentageMin: props.discountPercentageMin || 15,
+            offeredPriceMax: props.offeredPriceMax || 2000.0,
+            discountPercentageMin: props.discountPercentageMin || 15.0,
             kind: props.kind,
             level: props.level,
             shift: props.shift,
@@ -65,10 +66,18 @@ class OfferFilter extends Component {
         return (
             <ScrollView style={{backgroundColor: 'white'}}>
                 <HidableListHeader title={'Curso'}>
-                    <InputTextOption text={courseSearch ? courseSearch : filters.COURSE} onPress={() => this.listSearch(filters.COURSE)}/>
+                    <InputTextOption
+                        text={courseSearch ? courseSearch : filters.COURSE}
+                        onPress={() => this.listSearch(filters.COURSE)}
+                        image={School}
+                    />
                 </HidableListHeader>
                 <HidableListHeader title={'Universidade'}>
-                    <InputTextOption text={universitySearch ? universitySearch : filters.UNIVERSITY} onPress={() => this.listSearch(filters.UNIVERSITY)}/>
+                    <InputTextOption
+                        text={universitySearch ? universitySearch : filters.UNIVERSITY}
+                        onPress={() => this.listSearch(filters.UNIVERSITY)}
+                        image={Place}
+                    />
                 </HidableListHeader>
                 <HidableListHeader title={'Preço máximo'}>
                     <CustomSlider

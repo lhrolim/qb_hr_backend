@@ -16,7 +16,7 @@ export default class CustomSlider extends React.Component {
             <View style={{padding: 15}}>
                 <Slider
                     maximumValue={maxValue}
-                    value={value}
+                    value={Number(value)}
                     onValueChange={(value) => onValueChange(value.toFixed(0))}
                 />
                 <Text>{text}</Text>

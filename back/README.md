@@ -7,20 +7,6 @@ For the sake fo simplicity it relies on an in-memory sqllite database.
 Although it was built in RoR it's outside of the scope of this application to leverage advanced
 Ruby knowledge.
 
-It might be needed, however, to fix eventual bugs on the api in order to meet the requirements of the exercise.
-
-Refer to [Requirements](../../Requirements.md)
-
-
-Note that we might also consider, additionally, any eventual api improvements in the following areas:
-
-* Documentation
-* Performance (eg: payload reduction)
-
-In case the candidate is familiar with RoR,
-any extra refactorings/tests are also welcome.
-
-
 # Setup
 
 After the cloning the repository, the following steps are required to bootstrap the backend

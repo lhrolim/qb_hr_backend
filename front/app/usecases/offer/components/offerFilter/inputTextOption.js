@@ -1,16 +1,12 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import School from '../../../../../assets/img/school.png'
-import Place from '../../../../../assets/img/place.png'
-import Filter from '../../../../../assets/img/filter.png'
-import colors from '../../../../contants/colors'
-import filters from '../../../../contants/filters'
 
-export default InputTextOption = ({onPress, text}) => {
+
+export default InputTextOption = ({onPress, text, image}) => {
     return (
         <TouchableOpacity style={styles.container} onPress={() => onPress()}>
             <Text style={styles.text}> {text} </Text>
-            <Image style={styles.image} source={School}/>
+            <Image style={styles.image} source={image}/>
         </TouchableOpacity>
     );
 }
