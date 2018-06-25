@@ -9,8 +9,6 @@ const superagent = superagentPromise(_superagent, global.Promise);
 
 // const encode = encodeURIComponent;
 const responseBody = res => {
-    //TODO: mark ajax end
-    console.log(res)
     return {
         data: res.body,
         err: null

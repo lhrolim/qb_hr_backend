@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ScrollView, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {View, ScrollView, TouchableOpacity, Text} from 'react-native';
 import {connect} from "react-redux";
 import HidableListHeader from '../../../components/hidableListHeader'
 import InputTextOption from '../components/offerFilter/inputTextOption'
@@ -7,7 +7,6 @@ import CustomSlider from '../components/offerFilter/customSlider'
 import CheckList from '../components/offerFilter/checkList'
 import Button from '../../../components/button'
 import filters from "../../../contants/filters"
-import colors from '../../../contants/colors'
 import {fetchOffersList} from "../actions/offerAction";
 import School from '../../../../assets/img/school.png'
 import Place from '../../../../assets/img/place.png'
@@ -32,7 +31,6 @@ class OfferFilter extends Component {
 
     clear(props) {
         props.fetchOffersList({page: 1}, true)
-        props.navigation.goBack()
     }
 
     componentDidMount(){
@@ -65,6 +63,7 @@ class OfferFilter extends Component {
         } = this.state
 
         this.props.fetchOffersList(filter, false)
+        this.props.navigation.goBack()
     }
 
     render() {
@@ -138,7 +137,6 @@ class OfferFilter extends Component {
                         onPress={() => this.filter()}
                     />
                 </View>
-
             </ScrollView>
         );
     }

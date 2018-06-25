@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import {View, Text, ScrollView, StyleSheet, Alert} from 'react-native';
 import {HeaderDetail} from "../components/offerDetail/header";
 import defaultStyles from '../../../contants/styles'
 import {Price} from '../../../components/price'
@@ -94,7 +94,7 @@ const DetailFooter = ({price, offer, discount}) => (
             scholarship={discount}
         />
         <Text style={defaultStyles.boldText}> Uma economia de {price - offer} reais</Text>
-        <Button title={'Quero essa Bolsa'} onPress={() => console.log('click')}/>
+        <Button title={'Quero essa Bolsa'} onPress={() => Alert.alert('Sucesso','Sua bolsa foi reservada!')}/>
     </View>
 )
 

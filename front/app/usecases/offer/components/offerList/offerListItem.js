@@ -11,7 +11,7 @@ export const OfferListItem = ({item, onPress}) => {
                 onPress={() => onPress(item.id)}
             >
                 <View style={style.mainContainer}>
-                    <View>
+                    <View style={{flex: 1}}>
                         <Header
                             image={item.university.logo}
                             title={item.university.name}
@@ -20,7 +20,7 @@ export const OfferListItem = ({item, onPress}) => {
                         <Tags
                             tags={[item.course.kind, item.course.shift, periodsToTime(item.course.max_periods)]}
                         />
-                        <Text style={[style.text, {marginBottom: 20, marginTop: 10}]}> Campus Unidade Sede (São José dos Campos, SP) </Text>
+                        <Text style={[style.text, {marginBottom: 20, marginTop: 10}]}> {item.course.name} </Text>
                         <Price
                             price={item.full_price}
                             offer={item.offered_price}
@@ -40,7 +40,7 @@ const Header = ({image, title, subtitle}) => {
             <Image style={style.image} source={{uri: image}} resizeMode='contain'/>
             <View style={{marginLeft: 20}}>
                 <Text style={style.title}> {title} </Text>
-                <Text style={style.text}> {subtitle} </Text>
+                <Text style={style.text} ellipsizeMode={'head'}> {subtitle} </Text>
             </View>
         </View>
     )
@@ -73,6 +73,8 @@ const style = StyleSheet.create({
         elevation: 1,
         margin: 10,
         padding: 20,
+        paddingRight: 10,
         flexDirection: 'row',
+        justifyContent: 'flex-end'
     }
 })

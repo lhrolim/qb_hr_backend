@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {View} from 'react-native';
 import SearchList from '../../../components/searchList'
 import colors from "../../../contants/colors";
 import {connect} from "react-redux";
@@ -10,7 +11,7 @@ import {searchCourses, fetchOffersList, searchUniversity} from "../actions/offer
 class OfferSearch extends Component {
 
     static navigationOptions = {
-        headerStyle:{
+        headerStyle: {
             backgroundColor: colors.primaryAccent
         },
         headerTintColor: 'white',
@@ -27,14 +28,21 @@ class OfferSearch extends Component {
     }
 
     componentWillMount() {
-        const { type } = this.state
-        this.setupComponent(this.props,type)
+        const {type} = this.state
+        this.setupComponent(this.props, type)
     }
 
     componentWillReceiveProps(props) {
-        const { type } = this.state
-        this.setupComponent(props,type)
+        const {type} = this.state
+        if (props.err) {
+            alert('Ocorreu um erro ao buscar, por favor tente novamente.')
+        } else if (!props.loading) {
+            this.setupComponent(props, type)
+        }
+    }
 
+    componentDidMount() {
+        this.searchByType(this.state.type, '')
     }
 
     setupComponent(props, type) {
@@ -52,7 +60,7 @@ class OfferSearch extends Component {
     }
 
     onTextChange(text) {
-        const { search } = this.state
+        const {search} = this.state
         if (search) clearTimeout(search)
         let timer
         if (text.length > 2) {
@@ -102,19 +110,19 @@ class OfferSearch extends Component {
         } = this.state
 
         const {
-            loading
+            loading,
         } = this.props
 
         return (
-                <SearchList
-                    list={searchResults}
-                    onChangeText={(text) => this.onTextChange(text)}
-                    text={text}
-                    clearText={() => this.setState({text: ''})}
-                    onItemSelected={(item) => this.onItemSelected(item)}
-                    type={type}
-                    loading={loading}
-                />
+            <SearchList
+                list={searchResults}
+                onChangeText={(text) => this.onTextChange(text)}
+                text={text}
+                clearText={() => this.setState({text: ''})}
+                onItemSelected={(item) => this.onItemSelected(item)}
+                type={type}
+                loading={loading}
+            />
         );
     }
 }
@@ -126,6 +134,7 @@ function mapStateToProps(state) {
         courseName: state.offerReducer.courseSearch,
         universityName: state.offerReducer.universitySearch,
         loading: state.offerReducer.loadingSearch,
+        err: state.offerReducer.errSearch
     }
 }
 

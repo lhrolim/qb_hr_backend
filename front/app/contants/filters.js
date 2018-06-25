@@ -1,6 +1,6 @@
 export default filters = {
     COURSE: 'O que você quer estudar?',
-    UNIVERSITY: 'Escolha uma faculdade!'
+    UNIVERSITY: 'Em qual faculdade?'
 }
 
 // TODO: find a better way to clear the initialState object

@@ -41,6 +41,7 @@ export const fetchOffersList = (filter, clear, search) => async (dispatch) => {
             dispatch(fetchOffersListStart(filter))
         }
 
+        if (search) dispatch(NavigationActions.back())
 
         const res = await agent.Offer.list();
         if (res.err) {
@@ -50,7 +51,6 @@ export const fetchOffersList = (filter, clear, search) => async (dispatch) => {
                 dispatch(clearAndFetchOffersListSuccess(res.data))
             } else {
                 if (search) {
-                    dispatch(NavigationActions.back())
                     dispatch(filterAndFetchListSuccess(res.data))
                 } else {
                     dispatch(fetchOffersListSuccess(res.data))

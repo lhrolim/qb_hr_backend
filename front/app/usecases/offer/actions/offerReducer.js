@@ -79,7 +79,7 @@ export default offerState = (state = InitialState, action) => {
         case type.CLEAR_AND_FETCH_OFFERS_LIST_START:
             return {
                 ...state,
-                loading: false,
+                loading: true,
                 err: null,
                 filter: clearFilters(InitialState.filter)
             }

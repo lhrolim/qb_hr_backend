@@ -2,6 +2,7 @@ import React from 'react';
 import {TextInput, Text, View, StyleSheet, FlatList, Image, TouchableOpacity} from 'react-native';
 import colors from '../contants/colors'
 import Close from '../../assets/img/close.png'
+import defaultStyles from "../contants/styles";
 
 export default class SearchList extends React.Component {
 
@@ -25,14 +26,21 @@ export default class SearchList extends React.Component {
                     text={text}
                     type={type}
                 />
-                <TipDivision />
-                {loading ? <Loading /> :
-                    <FlatList
-                        data={list}
-                        renderItem={({ item }) => (
-                            <ListItem item={item} onItemSelected={() => onItemSelected(item)}/>
-                        )}
-                    />
+                <TipDivision/>
+                {loading ?
+                    <Loading/>
+                    :
+                    list.length == 0 ?
+                        <View style={defaultStyles.centralizedContainer}>
+                            <Text style={[defaultStyles.errorPlaceholder, {color: 'white'}]}> Nenhum resultado encontrado </Text>
+                        </View>
+                        :
+                        <FlatList
+                            data={list}
+                            renderItem={({item}) => (
+                                <ListItem item={item} onItemSelected={() => onItemSelected(item)}/>
+                            )}
+                        />
                 }
             </View>
         )
@@ -73,8 +81,8 @@ const TipDivision = () => {
 const ListItem = ({item, onItemSelected}) => (
     <TouchableOpacity style={{paddingTop: 10}} onPress={() => onItemSelected()}>
         {item.name && <Text style={[styles.itemInput, {fontWeight: 'bold'}]}> {item.name} </Text>}
-        {item.kind && <Text style={styles.itemInput}> {item.kind} </Text> }
-        {item.shift && <Text style={styles.itemInput}> {item.shift} </Text> }
+        {item.kind && <Text style={styles.itemInput}> {item.kind} </Text>}
+        {item.shift && <Text style={styles.itemInput}> {item.shift} </Text>}
         <View style={styles.itemDivider}/>
     </TouchableOpacity>
 )

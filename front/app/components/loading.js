@@ -5,6 +5,7 @@ import colors from '../contants/colors'
 export default class Loading extends React.Component {
 
     render() {
+
         const { show } = this.props
         if (show) {
             return (
